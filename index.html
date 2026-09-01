@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
     
     <style>
         :root {
-            --primary: #047857;
-            --primary-dark: #065f46;
+            --primary: #15803d;
+            --primary-dark: #166534;
+            --primary-light: #dcfce7;
             --accent: #d97706;
+            --accent-hover: #b45309;
             --text-dark: #1f2937;
             --text-muted: #4b5563;
-            --bg-light: #f9fafb;
+            --bg-light: #f8fafc;
             --white: #ffffff;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -25,6 +29,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -33,52 +38,66 @@
             line-height: 1.6;
         }
 
-        /* Top Bar */
+        /* Top Announcement Bar */
         .top-bar {
             background-color: var(--primary-dark);
             color: var(--white);
-            padding: 8px 15px;
+            padding: 10px 20px;
             font-size: 0.95rem;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .top-bar a {
             color: #fef08a;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        /* Header */
+        /* Header & Navbar */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .navbar {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem;
         }
 
-        .logo {
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
             color: var(--primary);
-        }
-
-        .logo h1 {
-            font-size: 1.6rem;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
-        .logo span {
-            font-size: 0.9rem;
+        .brand-text span {
+            font-size: 0.88rem;
             color: var(--accent);
             font-weight: 600;
             display: block;
@@ -87,14 +106,15 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 22px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            transition: 0.3s;
+            font-size: 1.05rem;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
@@ -103,118 +123,221 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(6, 95, 70, 0.88), rgba(4, 120, 87, 0.88)), url('https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1200&q=80') center/cover;
+            background: linear-gradient(rgba(22, 101, 52, 0.88), rgba(21, 128, 61, 0.88)), url('https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1400&q=80') center/cover;
             color: var(--white);
             text-align: center;
-            padding: 4.5rem 1.5rem;
+            padding: 5rem 1.5rem;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(5px);
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 650px;
-            margin: 0 auto 1.5rem;
+            font-size: 1.25rem;
+            max-width: 750px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             font-weight: 600;
-            padding: 0.7rem 1.8rem;
-            border-radius: 25px;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
             text-decoration: none;
             transition: 0.3s;
+            font-size: 1.05rem;
         }
 
-        .btn:hover {
-            background-color: #b45309;
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
         }
 
-        /* Section Layout */
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe57;
+        }
+
+        /* Common Section Layout */
         .section {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
-            padding: 3.5rem 1.5rem;
+            padding: 4.5rem 1.5rem;
+        }
+
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 1.9rem;
+            font-size: 2.2rem;
             color: var(--primary);
-            margin-bottom: 2rem;
             position: relative;
+            display: inline-block;
+            font-weight: 700;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background: var(--accent);
-            margin: 6px auto 0;
+            margin: 8px auto 0;
             border-radius: 2px;
         }
 
-        /* Features */
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-size: 1.05rem;
+        }
+
+        /* Features Section */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
         }
 
         .feature-card {
             background: var(--white);
-            padding: 1.8rem;
-            border-radius: 10px;
+            padding: 2.2rem 1.5rem;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-            border-bottom: 3px solid var(--primary);
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
 
         .feature-card i {
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
-        /* Products */
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Products Grid (All 9 Rices) */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
 
-        .product-card img {
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img-wrapper img {
             width: 100%;
-            height: 190px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .badge-quality {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 3px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
         }
 
         .product-info {
-            padding: 1.2rem;
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .product-info h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            color: var(--text-dark);
             margin-bottom: 0.4rem;
         }
 
         .product-info p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .product-meta {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: var(--primary-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
         }
 
         .order-btn {
@@ -225,8 +348,8 @@
             background-color: #25d366;
             color: var(--white);
             text-decoration: none;
-            padding: 0.6rem;
-            border-radius: 6px;
+            padding: 0.65rem;
+            border-radius: 8px;
             font-weight: 600;
             transition: 0.3s;
         }
@@ -235,43 +358,107 @@
             background-color: #1ebe57;
         }
 
-        /* Address & Contact */
+        /* Wholesale / Supply Banner */
+        .wholesale-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border-radius: 16px;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .wholesale-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .wholesale-banner p {
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        /* Customer Trust / Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--accent);
+        }
+
+        .stars {
+            color: #f59e0b;
+            margin-bottom: 0.8rem;
+        }
+
+        .review-card p {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* Branches & Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .branch-card {
             background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 5px solid var(--accent);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--primary);
+            box-shadow: var(--card-shadow);
         }
 
         .branch-card h3 {
             color: var(--primary);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .phone-box {
+        .branch-card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .phone-banner-box {
             background: #ecfdf5;
-            border: 1px dashed var(--primary);
-            padding: 1.2rem;
-            border-radius: 10px;
+            border: 2px dashed var(--primary);
+            padding: 2rem;
+            border-radius: 12px;
             text-align: center;
-            margin-top: 1.5rem;
+            margin-top: 2.5rem;
         }
 
-        .phone-box a {
+        .phone-banner-box a {
             color: var(--primary);
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
         }
 
         /* Footer */
@@ -279,36 +466,56 @@
             background-color: var(--primary-dark);
             color: var(--white);
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
         }
 
-        @media (max-width: 768px) {
+        footer p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 820px) {
             .navbar {
                 flex-direction: column;
                 gap: 12px;
+            }
+            .hero h2 {
+                font-size: 2.1rem;
+            }
+            .top-bar {
+                text-align: center;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- Top Announcement Bar -->
     <div class="top-bar">
-        জরুরী অর্ডার ও যোগাযোগের জন্য কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a>
+        <span><i class="fa-solid fa-bullhorn"></i> সরাসরি মিল থেকে সংগৃহীত প্রিমিয়াম কোয়ালিটি চাউল পাইকারি দরে সরবরাহ করা হয়</span>
+        <div>
+            কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a>
+        </div>
     </div>
 
-    <!-- Header / Navbar -->
+    <!-- Header / Navbar with Logo -->
     <header>
         <div class="navbar">
-            <a href="#" class="logo">
-                <h1>মেসার্স সোনালী ট্রেডার্স</h1>
-                <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+            <a href="#" class="brand-container">
+                <img src="logo.png" alt="মেসার্স সোনালী ট্রেডার্স লোগো" class="brand-logo">
+                <div class="brand-text">
+                    <h1>মেসার্স সোনালী ট্রেডার্স</h1>
+                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+                </div>
             </a>
             <ul class="nav-links">
                 <li><a href="#home">হোম</a></li>
-                <li><a href="#features">সুবিধাসমূহ</a></li>
-                <li><a href="#products">চাউলের তালিকা</a></li>
+                <li><a href="#about">আমাদের বৈশিষ্ট্য</a></li>
+                <li><a href="#products">চালের তালিকা</a></li>
+                <li><a href="#wholesale">পাইকারি সরবরাহ</a></li>
                 <li><a href="#branches">ঠিকানা ও শাখা</a></li>
             </ul>
         </div>
@@ -316,69 +523,194 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-badge"><i class="fa-solid fa-award"></i> শতভাগ খাঁটি ও বাছাইকৃত সেরা চাল</div>
         <h2>পাইকারি ও খুচরা চাউলের বিশ্বস্ত প্রতিষ্ঠান</h2>
-        <p>সরাসরি মিল থেকে সংগৃহীত উন্নত ও নির্ভেজাল চাউল সরবরাহ করা হয় পাইকারি মূল্যে।</p>
-        <a href="https://wa.me/8801320395462" class="btn" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> সরাসরি চ্যাট করুন
-        </a>
+        <p>দিনাজপুর, নওগাঁ, কুষ্টিয়া ও দেশের সেরা মিল থেকে সংগৃহীত ১০০% প্রিমিয়াম কোয়ালিটি চালের নির্ভরযোগ্য আড়ৎ।</p>
+        <div class="hero-buttons">
+            <a href="#products" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> চালের তালিকা দেখুন</a>
+            <a href="https://wa.me/8801320395462" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে দরদাম জানুন</a>
+        </div>
     </section>
 
-    <!-- Features -->
-    <section class="section" id="features">
-        <h2 class="section-title">আমাদের বৈশিষ্ট্য</h2>
+    <!-- Features Section -->
+    <section class="section" id="about">
+        <div class="section-title-wrap">
+            <h2 class="section-title">কেন আমাদের নির্বাচন করবেন?</h2>
+            <p class="section-subtitle">গুণগত মান এবং সঠিক ওজনে আমরা কোনো আপস করি না</p>
+        </div>
         <div class="features-grid">
             <div class="feature-card">
                 <i class="fa-solid fa-wheat-awn"></i>
-                <h3>উন্নত মান</h3>
-                <p>সরাসরি দিনাজপুর, নওগাঁ ও কুষ্টিয়ার বাছাইকৃত চাল।</p>
+                <h3>১০০% প্রিমিয়াম মান</h3>
+                <p>কড়কড়ে, পলিশ ছাড়া ও সঠিক আর্দ্রতার বাছাইকৃত চাল সরাসরি আড়তে মজুদ থাকে।</p>
             </div>
             <div class="feature-card">
-                <i class="fa-solid fa-sack-dollar"></i>
-                <h3>ন্যায্য আড়ৎ দর</h3>
-                <p>বাজারের সেরা পাইকারি ও সুলভ মূল্যের নিশ্চয়তা।</p>
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h3>আড়তের পাইকারি দর</h3>
+                <p>হোটেল, রেস্তোরাঁ, মুদি দোকান ও পরিবারের জন্য সবচেয়ে সাশ্রয়ী পাইকারি দাম।</p>
             </div>
             <div class="feature-card">
-                <i class="fa-solid fa-truck"></i>
-                <h3>দ্রুত সরবরাহ</h3>
-                <p>অর্ডার অনুযায়ী দ্রুত আড়ৎ বা দোকানে সরবরাহ ব্যবস্থা।</p>
+                <i class="fa-solid fa-weight-scale"></i>
+                <h3>সঠিক ওজন ও বস্তা</h3>
+                <p>প্রতিটি বস্তা ডিজিটাল স্কেলে নিখুঁত ওজনে সিলগালা অবস্থায় সরবরাহ করা হয়।</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>দ্রুত ডেলিভারি</h3>
+                <p>টঙ্গী, গাজীপুরসহ যেকোনো স্থানে গাড়ি বা পিকআপে দ্রুত পৌঁছানোর ব্যবস্থা।</p>
             </div>
         </div>
     </section>
 
-    <!-- Products -->
+    <!-- Products Section (All 9 Types of Rice) -->
     <section class="section" id="products">
-        <h2 class="section-title">আমাদের চালের ধরণসমূহ</h2>
+        <div class="section-title-wrap">
+            <h2 class="section-title">আমাদের প্রিমিয়াম চালের সমাহার</h2>
+            <p class="section-subtitle">সব ধরনের চাল ২৫ কেজি ও ৫০ কেজি ওজনের বস্তায় সুলভ মূল্যে প্রস্তুত</p>
+        </div>
+
         <div class="product-grid">
-            
+
+            <!-- 1. মিনিকেট -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" alt="মিনিকেট চাল">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" alt="মিনিকেট চাল">
+                    <span class="badge-quality">সেরা চয়েস</span>
+                </div>
                 <div class="product-info">
                     <h3>প্রিমিয়াম মিনিকেট চাল</h3>
-                    <p>উন্নত মানের চকচকে ও পরিষ্কার মিনিকেট চাল (৫০ কেজি/২৫ কেজি বস্তা)।</p>
-                    <a href="https://wa.me/8801320395462?text=আমি+মিনিকেট+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / দরদাম জানুন
+                    <p>চকচকে, সাদা ও লম্বা দানার প্রিমিয়াম মিনিকেট। ভাত হবে ঝরঝরে ও সুস্বাদু।</p>
+                    <span class="product-meta">প্যাকিং: ২৫ কেজি / ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+প্রিমিয়াম+মিনিকেট+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
                     </a>
                 </div>
             </div>
 
+            <!-- 2. বাসমতী -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=500&q=80" alt="নাজিরশাইল চাল">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=500&q=80" alt="বাসমতী চাল">
+                    <span class="badge-quality">সুপার প্রিমিয়াম</span>
+                </div>
                 <div class="product-info">
-                    <h3>স্পেশাল নাজিরশাইল চাল</h3>
-                    <p>ঝরঝরে ও সুস্বাদু সেরা মানের প্রিমিয়াম নাজিরশাইল চাল।</p>
+                    <h3>স্পেশাল বাসমতী চাল</h3>
+                    <p>অতিরিক্ত লম্বা দানাদার ও রাজকীয় স্বাদের বাসমতী চাল। বিরিয়ানি ও বিশেষ ভোজের জন্য সেরা।</p>
+                    <span class="product-meta">প্যাকিং: ২৫ কেজি / ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+বাসমতী+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. নাজিরশাইল -->
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" alt="নাজিরশাইল চাল">
+                    <span class="badge-quality">জনপ্রিয়</span>
+                </div>
+                <div class="product-info">
+                    <h3>খাঁটি নাজিরশাইল চাল</h3>
+                    <p>চিকন ও ঐতিহ্যবাহী নাজিরশাইল। সহজপাচ্য এবং নিয়মিত খাওয়ার জন্য দারুণ স্বাস্থ্যকর।</p>
+                    <span class="product-meta">প্যাকিং: ২৫ কেজি / ৫০ কেজি বস্তা</span>
                     <a href="https://wa.me/8801320395462?text=আমি+নাজিরশাইল+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / দরদাম জানুন
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
                     </a>
                 </div>
             </div>
 
+            <!-- 4. সুগন্ধি চিনিগুঁড়া -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80" alt="সুগন্ধি পোলাও চাল">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1568651358485-645b2f2d93e5?auto=format&fit=crop&w=500&q=80" alt="সুগন্ধি চিনিগুঁড়া চাল">
+                    <span class="badge-quality">খাঁটি সুবাস</span>
+                </div>
                 <div class="product-info">
-                    <h3>সুগন্ধি চিনিগুঁড়া / কাটারিভোগ</h3>
-                    <p>চমৎকার সুবাসযুক্ত পোলাও ও বিরিয়ানির জন্য খাঁটি চিনিগুঁড়া চাল।</p>
-                    <a href="https://wa.me/8801320395462?text=আমি+পোলাও+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / দরদাম জানুন
+                    <h3>সুগন্ধি চিনিগুঁড়া চাল</h3>
+                    <p>দিনাজপুরের বাছাইকৃত চমৎকার সুবাসিত ছোট দানার চাল। পোলাও, বিরিয়ানি ও পায়েসের জন্য পারফেক্ট।</p>
+                    <span class="product-meta">প্যাকিং: ২৫ কেজি / ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+সুগন্ধি+চিনিগুঁড়া+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
+                    </a>
+                </div>
+            </div>
+
+            <!-- 5. আটাশ (BR-28) -->
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" alt="আটাশ চাল">
+                    <span class="badge-quality">সাশ্রয়ী</span>
+                </div>
+                <div class="product-info">
+                    <h3>বিআর-২৮ (আটাশ) চাল</h3>
+                    <p>মাঝারি দানার পরিষ্কার ও সুস্বাদু চাল। হোটেল, মেস ও পারিবারিক ব্যবহারে সবচেয়ে বেশি জনপ্রিয়।</p>
+                    <span class="product-meta">প্যাকিং: ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+আটাশ+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6. পাইজাম -->
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=500&q=80" alt="পাইজাম চাল">
+                    <span class="badge-quality">প্রিমিয়াম</span>
+                </div>
+                <div class="product-info">
+                    <h3>দেশি পাইজাম চাল</h3>
+                    <p>উন্নত মানের সুস্বাদু ঝরঝরে পাইজাম চাল। রান্না করার পর চমৎকার স্বাদ পাওয়া যায়।</p>
+                    <span class="product-meta">প্যাকিং: ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+পাইজাম+চাল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
+                    </a>
+                </div>
+            </div>
+
+            <!-- 7. স্বর্ণা -->
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" alt="স্বর্ণা চাল">
+                    <span class="badge-quality">সুলভ মূল্য</span>
+                </div>
+                <div class="product-info">
+                    <h3>স্বর্ণা চাউল</h3>
+                    <p>পুষ্টিকর ও ভালো ভাতের স্বর্ণা চাউল। পাইকারি বড় অর্ডারে বিশেষ সাশ্রয়ী মূল্য পাওয়া যায়।</p>
+                    <span class="product-meta">প্যাকিং: ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+স্বর্ণা+চাউল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
+                    </a>
+                </div>
+            </div>
+
+            <!-- 8. হাসকি -->
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=500&q=80" alt="হাসকি চাল">
+                    <span class="badge-quality">খাঁটি স্বাদ</span>
+                </div>
+                <div class="product-info">
+                    <h3>হাসকি চাউল</h3>
+                    <p>প্রথাগত পদ্ধতিতে প্রক্রিয়াজাত খাঁটি হাসকি চাল। নিয়মিত ভাতের জন্য চমৎকার পছন্দ।</p>
+                    <span class="product-meta">প্যাকিং: ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+হাসকি+চাউল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
+                    </a>
+                </div>
+            </div>
+
+            <!-- 9. আতপ -->
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1568651358485-645b2f2d93e5?auto=format&fit=crop&w=500&q=80" alt="আতপ চাল">
+                    <span class="badge-quality">নরম ও মোলায়েম</span>
+                </div>
+                <div class="product-info">
+                    <h3>আতপ চাউল</h3>
+                    <p>পিঠা, পায়েস, খিচুড়ি ও ধর্মীয় অনুষ্ঠানের জন্য একদম নিখুঁত সাদা আতপ চাল।</p>
+                    <span class="product-meta">প্যাকিং: ২৫ কেজি / ৫০ কেজি বস্তা</span>
+                    <a href="https://wa.me/8801320395462?text=আমি+আতপ+চাউল+সম্পর্কে+জানতে+চাই" class="order-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন
                     </a>
                 </div>
             </div>
@@ -386,32 +718,73 @@
         </div>
     </section>
 
-    <!-- Branches & Contact -->
+    <!-- Wholesale / Commercial Supply Section -->
+    <div class="section" id="wholesale" style="padding-top: 0;">
+        <div class="wholesale-banner">
+            <h2><i class="fa-solid fa-truck-ramp-box"></i> বড় আকারের পাইকারি সরবরাহ</h2>
+            <p>হোটেল-রেস্তোরাঁ, ক্যান্টিন, ক্যাটারিং, সুপারশপ এবং যেকোনো ইভেন্টের জন্য পাইকারি লটে চাউল অর্ডার করতে সরাসরি আমাদের সাথে যোগাযোগ করুন। নিয়মিত ক্রেতাদের জন্য রয়েছে বিশেষ কমিশন ও সুবিধা।</p>
+            <a href="tel:01320395462" class="btn btn-primary" style="background: #ffffff; color: var(--primary-dark);"><i class="fa-solid fa-phone"></i> পাইকারি বুকিং কল: ০১৩২০-৩৯৫৪৬২</a>
+        </div>
+    </div>
+
+    <!-- Customer Reviews / Trust -->
+    <section class="section" style="background-color: #f1f5f9; border-radius: 16px; margin-bottom: 2rem;">
+        <div class="section-title-wrap">
+            <h2 class="section-title">সম্মানিত গ্রাহকদের মতামত</h2>
+            <p class="section-subtitle">আমাদের চালের মান এবং সেবায় সন্তুষ্ট নিয়মিত ক্রেতারা</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"সোনালী ট্রেডার্স থেকে নিয়মিত মিনিকেট ও নাজিরশাইল চাউল নিচ্ছি। চাউলে কোনো পাথর বা গুঁড়া থাকে না, মান সত্যিই চমৎকার।"</p>
+                <div class="review-author">— মো: শফিকুল ইসলাম, স্থানীয় ব্যবসায়ী</div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"আমাদের হোটেলের জন্য নিয়মিত আটাশ ও চিনিগুঁড়া চাউল নেওয়া হয়। সঠিক ওজন ও আড়তের ন্যায্য দর পাওয়া যায়।"</p>
+                <div class="review-author">— আল-আমিন রেস্তোরাঁ, চেরাগআলী</div>
+            </div>
+            <div class="review-card">
+                <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <p>"অর্ডার করার কিছুক্ষণের মধ্যেই মাল ডেলিভারি পেয়েছি। আন্তরিক ব্যবহার এবং খাঁটি চালের জন্য বিশ্বস্ত প্রতিষ্ঠান।"</p>
+                <div class="review-author">— ফারুক হোসেন, টঙ্গী</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Branches & Contact Section -->
     <section class="section" id="branches">
-        <h2 class="section-title">আমাদের ঠিকানা ও আউটলেট</h2>
+        <div class="section-title-wrap">
+            <h2 class="section-title">আমাদের ঠিকানা ও আউটলেটসমূহ</h2>
+            <p class="section-subtitle">সরাসরি আড়তে এসে চাল দেখে নেওয়ার সাদর আমন্ত্রণ</p>
+        </div>
+
         <div class="contact-grid">
-            
+            <!-- Branch 1 -->
             <div class="branch-card">
-                <h3><i class="fa-solid fa-store"></i> প্রধান শাখা</h3>
+                <h3><i class="fa-solid fa-shop"></i> প্রধান শাখা</h3>
                 <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
             </div>
 
+            <!-- Branch 2 -->
             <div class="branch-card">
                 <h3><i class="fa-solid fa-building"></i> ইউনিট-০২</h3>
                 <p>হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।</p>
             </div>
-
         </div>
 
-        <div class="phone-box">
-            <p style="font-size: 1.1rem; margin-bottom: 5px;">সরাসরি অর্ডার বা যে কোনো তথ্যের জন্য কল করুন:</p>
-            <a href="tel:01320395462"><i class="fa-solid fa-phone"></i> ০১৩২০-৩৯৫৪৬২</a>
+        <!-- Call Banner -->
+        <div class="phone-banner-box">
+            <h3 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 5px;">যেকোনো তথ্য ও সরাসরি চালের অর্ডারের জন্য:</h3>
+            <p style="color: var(--text-muted);">সকাল ৮:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে</p>
+            <a href="tel:01320395462"><i class="fa-solid fa-phone-volume"></i> ০১৩২০-৩৯৫৪৬২</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
     </footer>
 
 </body>
