@@ -4,17 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>যোগাযোগ ও শাখা - মেসার্স সোনালী ট্রেডার্স</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
+    
     <style>
-        :root { --primary: #15803d; --primary-dark: #166534; --accent: #d97706; --text-dark: #1f2937; --text-muted: #4b5563; --bg-light: #f8fafc; --white: #ffffff; }
+        :root { 
+            --primary: #15803d; 
+            --primary-dark: #166534; 
+            --accent: #d97706; 
+            --accent-hover: #b45309;
+            --text-dark: #1f2937; 
+            --text-muted: #4b5563; 
+            --bg-light: #f8fafc; 
+            --white: #ffffff; 
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Hind Siliguri',sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
-        .top-bar { background-color: var(--primary-dark); color: #fff; padding: 8px 15px; font-size: 0.95rem; text-align: center; }
+
+        /* Top Bar */
+        .top-bar { 
+            background-color: var(--primary-dark); 
+            color: #fff; 
+            padding: 8px 15px; 
+            font-size: 0.95rem; 
+            text-align: center; 
+        }
         .top-bar a { color: #fef08a; text-decoration: none; font-weight: bold; }
-        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top:0; z-index:100; }
-        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; }
+
+        /* Navigation Header */
+        header { 
+            background: #fff; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06); 
+            position: sticky; 
+            top:0; 
+            z-index:100; 
+        }
+        .navbar { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0.8rem 1.5rem; 
+        }
         .brand-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .brand-logo { width: 50px; height: 50px; object-fit: contain; }
         .brand-text h1 { font-size: 1.4rem; color: var(--primary); font-weight: 700; margin: 0; }
@@ -22,19 +59,229 @@
         .nav-links { display: flex; list-style: none; gap: 20px; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        .page-header { background: linear-gradient(rgba(22,101,52,0.9), rgba(21,128,61,0.9)), url('miniket.jpg') center/cover; color: #fff; text-align: center; padding: 3.5rem 1.5rem; }
-        .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 2.5rem; }
-        .branch-box { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); }
-        .branch-box h3 { color: var(--primary); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px; }
-        .phone-call-box { background: #ecfdf5; border: 2px dashed var(--primary); padding: 2rem; border-radius: 12px; text-align: center; }
-        .phone-call-box a { color: var(--primary); font-size: 1.5rem; font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; }
-        footer { background: var(--primary-dark); color: #fff; text-align: center; padding: 1.5rem; margin-top: 3rem; }
-        @media(max-width:768px){ .navbar { flex-direction: column; gap: 10px; } }
+
+        /* Page Banner */
+        .page-header { 
+            background: linear-gradient(rgba(22,101,52,0.9), rgba(21,128,61,0.9)), url('miniket.jpg') center/cover; 
+            color: #fff; 
+            text-align: center; 
+            padding: 3.5rem 1.5rem; 
+        }
+        .page-header h2 { font-size: 2.3rem; margin-bottom: 0.5rem; font-weight: 700; }
+
+        /* Main Container */
+        .container { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
+
+        /* Primary Hotline Banner */
+        .primary-hotline-box {
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2.5rem;
+        }
+        .primary-hotline-box h3 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+        }
+        .hotline-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0.5rem 0;
+        }
+        .hotline-actions {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-call {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+        .btn-call:hover { background-color: var(--primary-dark); }
+        .btn-wa {
+            background-color: #25d366;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+        .btn-wa:hover { background-color: #1ebe57; }
+
+        /* Branch Grid */
+        .contact-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 2.5rem; 
+        }
+        .branch-card { 
+            background: #fff; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            box-shadow: var(--card-shadow); 
+            border-top: 4px solid var(--primary); 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .branch-card h3 { 
+            color: var(--primary); 
+            margin-bottom: 1rem; 
+            font-size: 1.35rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        .branch-info-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .branch-info-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+        .branch-info-list i {
+            color: var(--accent);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        .phone-group a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .phone-group a:hover { text-decoration: underline; }
+        .badge-main {
+            background: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        /* Map Button */
+        .btn-map {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #ea4335;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-map:hover { background: #d93025; }
+
+        /* Marketing & Management Box */
+        .manager-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--accent);
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .manager-info h4 {
+            color: var(--primary-dark);
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+        .manager-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .manager-contact a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: #fff;
+            padding: 9px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .manager-contact a:hover { background: var(--accent-hover); }
+
+        /* Timing & Availability Note */
+        .timing-box {
+            background: #ecfdf5;
+            border: 1px dashed var(--primary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .timing-box p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer { 
+            background: var(--primary-dark); 
+            color: #fff; 
+            text-align: center; 
+            padding: 1.8rem; 
+            margin-top: 3.5rem; 
+        }
+
+        @media(max-width:768px){ 
+            .navbar { flex-direction: column; gap: 10px; } 
+            .hotline-number { font-size: 1.5rem; }
+            .manager-card { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
-    <div class="top-bar">সরাসরি পাইকারি চাউলের আড়ৎ | কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a></div>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        উভয় শাখার প্রধান হটলাইন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a> | মেসার্স সোনালী ট্রেডার্স
+    </div>
+
+    <!-- Navigation Header -->
     <header>
         <div class="navbar">
             <a href="index.html" class="brand-container">
@@ -53,32 +300,111 @@
         </div>
     </header>
 
+    <!-- Header Banner -->
     <div class="page-header">
         <h2>আমাদের সাথে যোগাযোগ</h2>
-        <p>সরাসরি আড়তে এসে চাল পরখ করে নেওয়ার জন্য সাদর আমন্ত্রণ</p>
+        <p>সরাসরি আড়তে এসে চাল পরখ করে নেওয়া বা বুকিংয়ের বিস্তারিত তথ্য</p>
     </div>
 
     <div class="container">
-        <div class="contact-grid">
-            <div class="branch-box">
-                <h3><i class="fa-solid fa-shop"></i> প্রধান শাখা</h3>
-                <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
-            </div>
-            <div class="branch-box">
-                <h3><i class="fa-solid fa-building"></i> ইউনিট-০২</h3>
-                <p>হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।</p>
+
+        <!-- Both Branches Main Hotline Box -->
+        <div class="primary-hotline-box">
+            <h3><i class="fa-solid fa-headset"></i> উভয় শাখার প্রধান নম্বর (হটলাইন)</h3>
+            <p style="color: var(--text-muted);">যেকোনো তথ্য ও সরাসরি চালের অর্ডারের জন্য সার্বক্ষণিক চালু রয়েছে</p>
+            <a href="tel:01320395462" class="hotline-number">
+                <i class="fa-solid fa-phone-volume"></i> ০১৩২০-৩৯৫৪৬২
+            </a>
+            <div class="hotline-actions">
+                <a href="tel:01320395462" class="btn-call"><i class="fa-solid fa-phone"></i> কল করুন</a>
+                <a href="https://wa.me/8801320395462" class="btn-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে মেসেজ দিন</a>
             </div>
         </div>
 
-        <div class="phone-call-box">
-            <h3>যেকোনো তথ্য ও সরাসরি চাউল বুকিংয়ের জন্য:</h3>
-            <p style="color: var(--text-muted);">সকাল ৮:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে</p>
-            <a href="tel:01320395462"><i class="fa-solid fa-phone-volume"></i> ০১৩২০-৩৯৫৪৬২</a>
+        <!-- Marketing Manager Box -->
+        <div class="manager-card">
+            <div class="manager-info">
+                <h4><i class="fa-solid fa-user-tie"></i> মার্কেটিং ম্যানেজার</h4>
+                <p>পাইকারি ডিলারশিপ, বড় লটের সাপ্লাই চুক্তি ও করপোরেট সাপ্লাইয়ের জন্য যোগাযোগ করুন</p>
+            </div>
+            <div class="manager-contact">
+                <a href="tel:01320395464"><i class="fa-solid fa-phone"></i> ০১৩২০-৩৯৫৪৬৪</a>
+            </div>
         </div>
+
+        <!-- Branches Details Grid with Maps -->
+        <div class="contact-grid">
+
+            <!-- Branch 1: Main Branch -->
+            <div class="branch-card">
+                <div>
+                    <h3><i class="fa-solid fa-store"></i> প্রধান শাখা</h3>
+                    <ul class="branch-info-list">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>ঠিকানা:</strong><br>
+                                সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="phone-group">
+                                <strong>মোবাইল নম্বরসমূহ:</strong><br>
+                                <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a><span class="badge-main">প্রধান</span><br>
+                                <a href="tel:01320395471">০১৩২০-৩৯৫৪৭১</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Google Maps Link for Branch 1 -->
+                <a href="https://maps.app.goo.gl/U2AxnFoTWqhAx5t96" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-map-location-dot"></i> গুগল ম্যাপে প্রধান শাখা দেখুন
+                </a>
+            </div>
+
+            <!-- Branch 2: Unit 02 -->
+            <div class="branch-card">
+                <div>
+                    <h3><i class="fa-solid fa-building"></i> ইউনিট-০২</h3>
+                    <ul class="branch-info-list">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <strong>ঠিকানা:</strong><br>
+                                হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="phone-group">
+                                <strong>মোবাইল নম্বরসমূহ:</strong><br>
+                                <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a><span class="badge-main">প্রধান</span><br>
+                                <a href="tel:01742831476">০১৭৪২-৮৩১৪৭৬</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Google Maps Link for Unit 02 -->
+                <a href="https://maps.app.goo.gl/t8ArgX39R8kmFPC36" target="_blank" class="btn-map">
+                    <i class="fa-solid fa-map-location-dot"></i> গুগল ম্যাপে ইউনিট-০২ দেখুন
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Working Hours Note -->
+        <div class="timing-box">
+            <p><strong><i class="fa-regular fa-clock"></i> আড়ৎ খোলা থাকার সময়:</strong> প্রতিদিন সকাল ৯:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে। যেকোনো জরুরি সহায়তায় সরাসরি ফোনে যোগাযোগ করুন।</p>
+        </div>
+
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
     </footer>
+
 </body>
 </html>
