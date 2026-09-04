@@ -26,7 +26,6 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Hind Siliguri',sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
-        /* Top Bar */
         .top-bar { 
             background-color: var(--primary-dark); 
             color: #fff; 
@@ -36,7 +35,6 @@
         }
         .top-bar a { color: #fef08a; text-decoration: none; font-weight: bold; }
 
-        /* Navigation Header */
         header { 
             background: #fff; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.06); 
@@ -60,7 +58,6 @@
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
 
-        /* Page Banner */
         .page-header { 
             background: linear-gradient(rgba(22,101,52,0.9), rgba(21,128,61,0.9)), url('miniket.jpg') center/cover; 
             color: #fff; 
@@ -69,74 +66,38 @@
         }
         .page-header h2 { font-size: 2.3rem; margin-bottom: 0.5rem; font-weight: 700; }
 
-        /* Main Container */
         .container { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
 
-        /* Primary Hotline Banner */
         .primary-hotline-box {
             background: #ffffff;
             border: 2px solid var(--primary);
             border-radius: 12px;
-            padding: 1.8rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             box-shadow: var(--card-shadow);
             margin-bottom: 2.5rem;
         }
         .primary-hotline-box h3 {
             color: var(--primary-dark);
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             margin-bottom: 0.4rem;
         }
         .hotline-number {
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin: 0.5rem 0;
+            margin: 0.6rem 0;
         }
-        .hotline-actions {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .btn-call {
-            background-color: var(--primary);
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.3s;
-        }
-        .btn-call:hover { background-color: var(--primary-dark); }
-        .btn-wa {
-            background-color: #25d366;
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.3s;
-        }
-        .btn-wa:hover { background-color: #1ebe57; }
 
-        /* Branch Grid */
         .contact-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
             gap: 25px; 
-            margin-bottom: 2.5rem; 
+            margin-bottom: 2rem; 
         }
         .branch-card { 
             background: #fff; 
@@ -191,7 +152,6 @@
             margin-left: 4px;
         }
 
-        /* Map Button */
         .btn-map {
             display: flex;
             align-items: center;
@@ -207,7 +167,6 @@
         }
         .btn-map:hover { background: #d93025; }
 
-        /* Marketing & Management Box */
         .manager-card {
             background: #fff;
             border-radius: 12px;
@@ -245,7 +204,6 @@
         }
         .manager-contact a:hover { background: var(--accent-hover); }
 
-        /* Timing & Availability Note */
         .timing-box {
             background: #ecfdf5;
             border: 1px dashed var(--primary);
@@ -256,9 +214,9 @@
         .timing-box p {
             color: var(--text-dark);
             font-size: 1.05rem;
+            margin: 0;
         }
 
-        /* Footer */
         footer { 
             background: var(--primary-dark); 
             color: #fff; 
@@ -276,12 +234,10 @@
 </head>
 <body>
 
-    <!-- Top Info Bar -->
     <div class="top-bar">
         উভয় শাখার প্রধান হটলাইন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a> | মেসার্স সোনালী ট্রেডার্স
     </div>
 
-    <!-- Navigation Header -->
     <header>
         <div class="navbar">
             <a href="index.html" class="brand-container">
@@ -301,7 +257,6 @@
         </div>
     </header>
 
-    <!-- Header Banner -->
     <div class="page-header">
         <h2>আমাদের সাথে যোগাযোগ</h2>
         <p>সরাসরি আড়তে এসে চাল পরখ করে নেওয়া বা বুকিংয়ের বিস্তারিত তথ্য</p>
@@ -309,43 +264,38 @@
 
     <div class="container">
 
-        <!-- Both Branches Main Hotline Box -->
+        <!-- Top Hotline Banner -->
         <div class="primary-hotline-box">
             <h3><i class="fa-solid fa-headset"></i> উভয় শাখার প্রধান নম্বর (হটলাইন)</h3>
             <p style="color: var(--text-muted);">যেকোনো তথ্য ও সরাসরি চালের অর্ডারের জন্য সার্বক্ষণিক চালু রয়েছে</p>
             <a href="tel:01320395462" class="hotline-number">
                 <i class="fa-solid fa-phone-volume"></i> ০১৩২০-৩৯৫৪৬২
             </a>
-            <div class="hotline-actions" style="margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-    <!-- কল বাটন -->
-    <a href="tel:01320395462" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #15803d; color: #ffffff; padding: 12px 26px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25); transition: 0.3s;">
-        <i class="fa-solid fa-phone" style="font-size: 1.1rem;"></i> কল করুন
-    </a>
-
-    <!-- হোয়াটসঅ্যাপ বাটন -->
-    <a href="https://wa.me/8801320395462" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #25d366; color: #ffffff; padding: 12px 26px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); transition: 0.3s;">
-        <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i> হোয়াটসঅ্যাপে মেসেজ দিন
-    </a>
-
-    <!-- ফেসবুক বাটন -->
-    <a href="https://www.facebook.com/share/19y85MzVms/" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #1877f2; color: #ffffff; padding: 12px 26px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.25); transition: 0.3s;">
-        <i class="fa-brands fa-facebook-f" style="font-size: 1.15rem;"></i> ফেসবুক পেজ
-    </a>
-</div>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="tel:01320395462" style="display: inline-flex; align-items: center; gap: 8px; background-color: #15803d; color: #ffffff; padding: 11px 24px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);">
+                    <i class="fa-solid fa-phone"></i> কল করুন
+                </a>
+                <a href="https://wa.me/8801320395462" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background-color: #25d366; color: #ffffff; padding: 11px 24px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);">
+                    <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে মেসেজ দিন
+                </a>
+                <a href="https://www.facebook.com/share/19y85MzVms/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background-color: #1877f2; color: #ffffff; padding: 11px 24px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.25);">
+                    <i class="fa-brands fa-facebook-f"></i> ফেসবুক পেজ
+                </a>
+            </div>
         </div>
 
         <!-- Marketing Manager Box -->
         <div class="manager-card">
             <div class="manager-info">
                 <h4><i class="fa-solid fa-user-tie"></i> মার্কেটিং ম্যানেজার</h4>
-                <p>পাইকারি ও করপোরেট সাপ্লাইয়ের জন্য যোগাযোগ করুন</p>
+                <p>পাইকারি ডিলারশিপ, বড় লটের সাপ্লাই চুক্তি ও করপোরেট সাপ্লাইয়ের জন্য যোগাযোগ করুন</p>
             </div>
             <div class="manager-contact">
                 <a href="tel:01320395464"><i class="fa-solid fa-phone"></i> ০১৩২০-৩৯৫৪৬৪</a>
             </div>
         </div>
 
-        <!-- Branches Details Grid with Maps -->
+        <!-- Branches Details Grid -->
         <div class="contact-grid">
 
             <!-- Branch 1: Main Branch -->
@@ -370,7 +320,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Google Maps Link for Branch 1 -->
                 <a href="https://maps.app.goo.gl/U2AxnFoTWqhAx5t96" target="_blank" class="btn-map">
                     <i class="fa-solid fa-map-location-dot"></i> গুগল ম্যাপে প্রধান শাখা দেখুন
                 </a>
@@ -398,7 +347,6 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Google Maps Link for Unit 02 -->
                 <a href="https://maps.app.goo.gl/t8ArgX39R8kmFPC36" target="_blank" class="btn-map">
                     <i class="fa-solid fa-map-location-dot"></i> গুগল ম্যাপে ইউনিট-০২ দেখুন
                 </a>
@@ -406,9 +354,25 @@
 
         </div>
 
+        <!-- Gmail Official Card (Under Branches) -->
+        <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem 2rem; box-shadow: var(--card-shadow); border: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="width: 50px; height: 50px; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <i class="fa-solid fa-envelope" style="color: #ea4335; font-size: 1.5rem;"></i>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-dark); font-size: 1.15rem; margin-bottom: 2px;">অফিশিয়াল ইমেইল যোগাযোগ</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">যেকোনো বাণিজ্যিক প্রস্তাব বা তথ্যের জন্য সরাসরি ইমেইল করুন</p>
+                </div>
+            </div>
+            <a href="mailto:sonalitradersrice@gmail.com" style="display: inline-flex; align-items: center; gap: 8px; background-color: #ea4335; color: #ffffff; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 12px rgba(234, 67, 53, 0.25); transition: 0.3s;">
+                <i class="fa-solid fa-paper-plane"></i> sonalitradersrice@gmail.com
+            </a>
+        </div>
+
         <!-- Working Hours Note -->
         <div class="timing-box">
-            <p><strong><i class="fa-regular fa-clock"></i> আড়ৎ খোলা থাকার সময়:</strong> প্রতিদিন সকাল ৯:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে। যেকোনো জরুরি সহায়তায় সরাসরি ফোনে যোগাযোগ করুন।</p>
+            <p><strong><i class="fa-regular fa-clock"></i> আড়ৎ খোলা থাকার সময়:</strong> প্রতিদিন সকাল ৮:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে। যেকোনো জরুরি সহায়তায় সরাসরি ফোনে যোগাযোগ করুন।</p>
         </div>
 
     </div>
