@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অর্ডার করুন - মেসার্স সোনালী ট্রেডার্স</title>
+<meta name="description" content="মেসার্স সোনালী ট্রেডার্সে পাইকারি চালের অর্ডার দিন। ফর্ম পূরণ করলেই আপনার তথ্যসহ হোয়াটসঅ্যাপে বার্তা চলে যাবে।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1F5B33;
+    --green-dark:#123A20;
+    --gold:#C99A3E;
+    --cream:#FBF7EE;
+    --ink:#26231A;
+    --ink-soft:#5C5646;
+    --line:#E3DABF;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Hind Siliguri', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+  }
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* topbar hotline strip - mirrors typical hotline bar on the existing site */
+  .hotline-strip{
+    background:var(--green-dark);color:#EFE9D6;
+    font-size:13.5px;text-align:center;padding:8px 12px;
+  }
+  .hotline-strip a{font-weight:600;color:var(--gold);}
+
+  header{
+    background:var(--white);border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:20;
+  }
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;max-width:1080px;margin:0 auto;gap:16px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    width:42px;height:42px;border-radius:50%;background:var(--green);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;flex-shrink:0;
+    object-fit:cover;
+  }
+  .brand-name{font-size:18px;font-weight:700;color:var(--green-dark);}
+  .brand-tag{font-size:12.5px;color:var(--ink-soft);}
+  nav{display:flex;gap:24px;font-size:15px;font-weight:600;flex-wrap:wrap;}
+  nav a{color:var(--ink-soft);padding:6px 2px;border-bottom:2px solid transparent;}
+  nav a:hover{color:var(--green-dark);}
+  nav a.active{color:var(--green-dark);border-color:var(--gold);}
+
+  .page-head{
+    background:var(--green-dark);color:var(--cream);
+    padding:44px 0 40px;
+  }
+  .page-head .kicker{color:var(--gold);font-size:14px;font-weight:600;margin-bottom:8px;}
+  .page-head h1{font-size:30px;margin:0 0 10px;font-weight:700;}
+  .page-head p{margin:0;max-width:560px;color:#D8D2BC;font-size:15.5px;}
+
+  section{padding:44px 0;}
+
+  .note{
+    background:#F1E4C8;border:1px solid var(--gold);color:#5C4A1E;
+    padding:14px 18px;border-radius:4px;font-size:14px;margin-bottom:28px;max-width:680px;
+  }
+
+  form.order-form{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:720px;
+    background:var(--white);border:1px solid var(--line);padding:28px;border-radius:6px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field.full{grid-column:1/-1;}
+  label{font-size:13.5px;color:var(--ink-soft);font-weight:600;}
+  input,select,textarea{
+    background:var(--cream);border:1px solid var(--line);border-radius:4px;
+    padding:11px 12px;font-family:'Hind Siliguri',sans-serif;font-size:15px;color:var(--ink);
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--green);border-color:var(--green);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:4px;
+    font-size:16px;font-weight:700;border:none;cursor:pointer;
+  }
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:var(--green-dark);}
+  .order-form .btn-primary{grid-column:1/-1;justify-self:start;margin-top:4px;}
+
+  #productRows{display:flex;flex-direction:column;gap:10px;}
+  .product-row{display:grid;grid-template-columns:2fr 1fr auto;gap:10px;align-items:center;}
+  .product-row .remove-row{
+    background:transparent;border:1px solid var(--line);border-radius:4px;
+    width:38px;height:38px;color:var(--ink-soft);font-size:15px;cursor:pointer;flex-shrink:0;
+  }
+  .product-row .remove-row:hover{border-color:#B3453B;color:#B3453B;}
+  .add-row-hint{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+
+  .side{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px;max-width:720px;
+  }
+  .side-card{
+    background:var(--white);border:1px solid var(--line);border-radius:6px;padding:20px;
+  }
+  .side-card h3{font-size:15.5px;margin:0 0 8px;color:var(--green-dark);}
+  .side-card p{font-size:14px;color:var(--ink-soft);margin:0;}
+  .side-card a{color:var(--green-dark);font-weight:700;}
+
+  footer{background:var(--green-dark);color:#C9C3AF;padding:28px 0;font-size:13.5px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  .fab{
+    position:fixed;right:20px;bottom:20px;z-index:60;background:#25D366;color:#fff;
+    width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,0.25);font-size:24px;
+  }
+
+  @media(max-width:820px){
+    nav{display:none;}
+    form.order-form{grid-template-columns:1fr;padding:20px;}
+    .side{grid-template-columns:1fr;}
+    .page-head h1{font-size:25px;}
+    .product-row{grid-template-columns:1fr 1fr;grid-template-areas:"name name" "qty remove";}
+    .product-row .prod-name{grid-area:name;}
+    .product-row .prod-qty{grid-area:qty;}
+    .product-row .remove-row{grid-area:remove;justify-self:end;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hotline-strip">যেকোনো তথ্য ও সরাসরি অর্ডারের জন্য: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a> (সকাল ৮টা - রাত ১০টা)</div>
+
+<header>
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="মেসার্স সোনালী ট্রেডার্স লোগো" class="brand-mark">
+      <div>
+        <div class="brand-name">মেসার্স সোনালী ট্রেডার্স</div>
+        <div class="brand-tag">প্রসিদ্ধ চাউলের আড়ৎ</div>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">হোম</a>
+      <a href="products.html">চালের তালিকা</a>
+      <a href="wholesale.html">পাইকারি সরবরাহ</a>
+      <a href="order.html" class="active">অর্ডার</a>
+      <a href="contact.html">যোগাযোগ ও শাখা</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="kicker">খুচরা ও পাইকারি অর্ডার</div>
+    <h1>আপনার চালের অর্ডার দিন</h1>
+    <p>নিচের ফর্মটি পূরণ করুন — জমা দিলেই আপনার তথ্যসহ একটা বার্তা তৈরি হয়ে সরাসরি আমাদের হোয়াটসঅ্যাপে চলে যাবে। ব্র্যান্ড, পরিমাণ ও এলাকা অনুযায়ী আমরা দ্রুত রেট ও ডেলিভারির সময় জানিয়ে দেব।</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="note">যেহেতু আমরা পাইকারি বিক্রেতা, তাই ব্র্যান্ড, পরিমাণ ও এলাকাভেদে দাম ভিন্ন হয় — তাই ওয়েবসাইটে নির্দিষ্ট রেট দেখানো হয় না। ফর্ম পাঠালে আমরা সঠিক রেট সরাসরি জানিয়ে দেব।</div>
+
+    <form class="order-form" id="orderForm">
+      <div class="field">
+        <label for="name">আপনার নাম</label>
+        <input type="text" id="name" required placeholder="যেমন: রহিম উদ্দিন">
+      </div>
+      <div class="field">
+        <label for="shop">প্রতিষ্ঠানের নাম (যদি থাকে)</label>
+        <input type="text" id="shop" placeholder="যেমন: রহিম স্টোর">
+      </div>
+      <div class="field">
+        <label for="phone">মোবাইল নম্বর</label>
+        <input type="tel" id="phone" required placeholder="০১৭xxxxxxxx">
+      </div>
+      <div class="field full">
+        <label>কোন প্রডাক্ট, কী পরিমাণ লাগবে</label>
+        <div id="productRows">
+          <div class="product-row">
+            <input type="text" class="prod-name" placeholder="প্রডাক্টের নাম (যেমন: এসিআই মিনিকেট)">
+            <input type="text" class="prod-qty" placeholder="পরিমাণ (যেমন: ৫০ বস্তা)">
+            <button type="button" class="remove-row" title="মুছুন">✕</button>
+          </div>
+        </div>
+        <div class="add-row-hint">প্রডাক্টের নাম লিখলেই নিচে আরেকটা নতুন ঘর নিজে থেকে চলে আসবে — যত প্রডাক্ট লাগবে সব একসাথে যোগ করতে পারবেন।</div>
+      </div>
+      <div class="field full">
+        <label for="area">ডেলিভারি এলাকা</label>
+        <input type="text" id="area" placeholder="যেমন: টঙ্গী, গাজীপুর">
+      </div>
+      <div class="field full">
+        <label for="note">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
+        <textarea id="note" rows="3" placeholder="আপনার প্রয়োজন সম্পর্কে বিস্তারিত লিখুন"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">হোয়াটসঅ্যাপে অর্ডার পাঠান</button>
+    </form>
+
+    <div class="side">
+      <div class="side-card">
+        <h3>সরাসরি কল করুন</h3>
+        <p>ফর্ম পূরণ না করে সরাসরি কথা বলতে চাইলে কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a></p>
+      </div>
+      <div class="side-card">
+        <h3>প্রধান শাখায় আসুন</h3>
+        <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</div>
+    <div>প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/8801320395462" aria-label="হোয়াটসঅ্যাপে যোগাযোগ করুন">☎</a>
+
+<script>
+var productRows = document.getElementById('productRows');
+
+function makeRow(){
+  var row = document.createElement('div');
+  row.className = 'product-row';
+  row.innerHTML =
+    '<input type="text" class="prod-name" placeholder="প্রডাক্টের নাম (যেমন: এসিআই মিনিকেট)">' +
+    '<input type="text" class="prod-qty" placeholder="পরিমাণ (যেমন: ৫০ বস্তা)">' +
+    '<button type="button" class="remove-row" title="মুছুন">✕</button>';
+  return row;
+}
+
+// auto-add a new blank row once the last row's product-name field gets text
+productRows.addEventListener('input', function(e){
+  if(!e.target.classList.contains('prod-name')) return;
+  var rows = productRows.querySelectorAll('.product-row');
+  var lastRow = rows[rows.length - 1];
+  if(e.target.closest('.product-row') === lastRow && e.target.value.trim() !== ''){
+    productRows.appendChild(makeRow());
+  }
+});
+
+// remove a row (keep at least one)
+productRows.addEventListener('click', function(e){
+  if(!e.target.classList.contains('remove-row')) return;
+  var rows = productRows.querySelectorAll('.product-row');
+  if(rows.length > 1){
+    e.target.closest('.product-row').remove();
+  } else {
+    e.target.closest('.product-row').querySelectorAll('input').forEach(function(i){ i.value = ''; });
+  }
+});
+
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('name').value.trim();
+  var shop = document.getElementById('shop').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var area = document.getElementById('area').value.trim();
+  var note = document.getElementById('note').value.trim();
+
+  var rows = productRows.querySelectorAll('.product-row');
+  var productLines = [];
+  rows.forEach(function(row){
+    var pname = row.querySelector('.prod-name').value.trim();
+    var pqty = row.querySelector('.prod-qty').value.trim();
+    if(pname){
+      productLines.push("- " + pname + (pqty ? " (" + pqty + ")" : ""));
+    }
+  });
+
+  var msg = "আসসালামু আলাইকুম, আমি পাইকারি চাল অর্ডার করতে চাই।\n";
+  msg += "নাম: " + name + "\n";
+  if(shop) msg += "প্রতিষ্ঠান: " + shop + "\n";
+  msg += "মোবাইল: " + phone + "\n";
+  if(productLines.length){
+    msg += "প্রডাক্ট:\n" + productLines.join("\n") + "\n";
+  }
+  if(area) msg += "এলাকা: " + area + "\n";
+  if(note) msg += "অতিরিক্ত তথ্য: " + note + "\n";
+
+  var url = "https://wa.me/8801320395462?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
