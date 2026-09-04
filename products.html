@@ -8,11 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        :root { --primary: #15803d; --primary-dark: #166534; --accent: #d97706; --text-dark: #1f2937; --text-muted: #4b5563; --bg-light: #f8fafc; --white: #ffffff; }
+        :root { 
+            --primary: #15803d; 
+            --primary-dark: #166534; 
+            --accent: #d97706; 
+            --text-dark: #1f2937; 
+            --text-muted: #4b5563; 
+            --bg-light: #f8fafc; 
+            --white: #ffffff; 
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Hind Siliguri',sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        
         .top-bar { background-color: var(--primary-dark); color: #fff; padding: 8px 15px; font-size: 0.95rem; text-align: center; }
         .top-bar a { color: #fef08a; text-decoration: none; font-weight: bold; }
+        
         header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top:0; z-index:100; }
         .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; }
         .brand-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -22,17 +33,137 @@
         .nav-links { display: flex; list-style: none; gap: 20px; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        
         .page-header { background: linear-gradient(rgba(22,101,52,0.9), rgba(21,128,61,0.9)), url('miniket.jpg') center/cover; color: #fff; text-align: center; padding: 3.5rem 1.5rem; }
         .page-header h2 { font-size: 2.3rem; margin-bottom: 0.5rem; }
-        .container { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; }
+        
+        .container { max-width: 1200px; margin: 2rem auto 4rem; padding: 0 1.5rem; }
+        
+        /* Search & Filter Controls */
+        .controls-wrapper {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 42px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .filter-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 7px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--text-dark);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .product-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; display: flex; flex-direction: column; }
+        .product-card { 
+            background: #fff; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: var(--card-shadow); 
+            border: 1px solid #e5e7eb; 
+            display: flex; 
+            flex-direction: column;
+            transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-4px); }
         .product-card img { width: 100%; height: 200px; object-fit: cover; }
         .product-info { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-info h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--text-dark); }
-        .product-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
-        .meta-tag { background: #dcfce7; color: var(--primary); font-size: 0.85rem; font-weight: bold; padding: 3px 8px; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }
-        .order-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #25d366; color: #fff; text-decoration: none; padding: 0.6rem; border-radius: 6px; font-weight: bold; }
+        .product-info h3 { font-size: 1.25rem; margin-bottom: 0.4rem; color: var(--text-dark); }
+        .product-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.8rem; flex-grow: 1; }
+        
+        .badges-wrapper {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .meta-tag { background: #dcfce7; color: var(--primary); font-size: 0.8rem; font-weight: bold; padding: 3px 8px; border-radius: 4px; }
+        .brand-tag { background: #fef3c7; color: #92400e; font-size: 0.8rem; font-weight: bold; padding: 3px 8px; border-radius: 4px; }
+
+        .order-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #25d366; color: #fff; text-decoration: none; padding: 0.65rem; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+        .order-btn:hover { background-color: #1ebe57; }
+
+        /* More Products Bulk Box */
+        .other-products-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3.5rem;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--accent);
+        }
+        .other-products-box h3 {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .other-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        .chip {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chip i { color: var(--primary); }
+
         footer { background: var(--primary-dark); color: #fff; text-align: center; padding: 1.5rem; margin-top: 3rem; }
         @media(max-width:768px){ .navbar { flex-direction: column; gap: 10px; } }
     </style>
@@ -60,97 +191,214 @@
 
     <div class="page-header">
         <h2>আমাদের সকল চালের ক্যাটালগ</h2>
-        <p>দিনাজপুর, কুষ্টিয়া ও নওগাঁর সেরা মিল থেকে সংগৃহীত শতভাগ খাঁটি ও বাছাইকৃত চাল</p>
+        <p>দিনাজপুর, কুষ্টিয়া ও নওগাঁর শীর্ষ মিল ও ব্র্যান্ডের ১০০% খাঁটি চাউল</p>
     </div>
 
     <div class="container">
-        <div class="product-grid">
-            <div class="product-card">
+
+        <!-- Search & Filter Controls -->
+        <div class="controls-wrapper">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="চালের নাম বা জাত লিখে খুঁজুন..." onkeyup="filterItems()">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterCategory('all')">সকল চাল</button>
+                <button class="filter-btn" onclick="filterCategory('premium')">প্রিমিয়াম / চিকন</button>
+                <button class="filter-btn" onclick="filterCategory('regular')">দৈনন্দিন / রেগুলার</button>
+                <button class="filter-btn" onclick="filterCategory('aroma')">পোলাও / সুগন্ধি</button>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+
+            <!-- 1. মিনিকেট -->
+            <div class="product-card" data-category="premium">
                 <img src="miniket.jpg" alt="মিনিকেট">
                 <div class="product-info">
                     <h3>প্রিমিয়াম মিনিকেট চাল</h3>
-                    <p>চকচকে, সাদা ও লম্বা দানার প্রিমিয়াম মিনিকেট। নিয়মিত খাবার জন্য সেরা।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>চকচকে, সাদা ও লম্বা দানার প্রিমিয়াম মিনিকেট। ভাত হবে ঝরঝরে ও নরম।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">এসিআই, মোজাম্মেল, ফ্রেশ</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=মিনিকেট+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 2. বাসমতী -->
+            <div class="product-card" data-category="premium">
                 <img src="basmati.jpg" alt="বাসমতী">
                 <div class="product-info">
                     <h3>স্পেশাল বাসমতী চাল</h3>
-                    <p>লম্বা দানাদার ও রাজকীয় সুবাস। শাহী বিরিয়ানি ও বিশেষ ভোজের চাল।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>লম্বা দানাদার ও রাজকীয় সুবাস। শাহী বিরিয়ানি ও বিশেষ মেহমানদারির জন্য সেরা।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">মোজাম্মেল, দাদা, ফ্রেশ</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=বাসমতী+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 3. নাজিরশাইল -->
+            <div class="product-card" data-category="premium">
                 <img src="nazirshail.jpg" alt="নাজিরশাইল">
                 <div class="product-info">
                     <h3>খাঁটি নাজিরশাইল চাল</h3>
-                    <p>চিকন ও ঐতিহ্যবাহী সুস্বাদু নাজিরশাইল। সহজপাচ্য এবং স্বাস্থ্যকর।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>চিকন ও ঐতিহ্যবাহী সুস্বাদু নাজিরশাইল। স্বাস্থ্যসচেতনদের প্রথম পছন্দ।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">এসিআই, বিশ্বাস, দেশ এগ্রো</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=নাজিরশাইল+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 4. চিনিগুঁড়া -->
+            <div class="product-card" data-category="aroma">
                 <img src="chinigura.jpg" alt="চিনিগুঁড়া">
                 <div class="product-info">
-                    <h3>সুগন্ধি চিনিগুঁড়া চাল</h3>
-                    <p>দিনাজপুরের চমৎকার সুবাসযুক্ত চিনিগুঁড়া চাল। পোলাও ও পায়েসের জন্য সেরা।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <h3>সুগন্ধি চিনিগুঁড়া চাল</h3>
+                    <p>দিনাজপুরের চমৎকার সুবাসযুক্ত চিনিগুঁড়া চাল। পোলাও, বিরিয়ানি ও পায়েসের জন্য।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">এসিআই, ফ্রেশ, পুষ্টি</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=চিনিগুঁড়া+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 5. আটাশ (BR-28) -->
+            <div class="product-card" data-category="regular">
                 <img src="atash.jpg" alt="আটাশ">
                 <div class="product-info">
                     <h3>বিআর-২৮ (আটাশ) চাল</h3>
-                    <p>মাঝারি দানার সুস্বাদু চাল। হোটেল ও ঘরোয়া ব্যবহারে অত্যন্ত জনপ্রিয়।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>মাঝারি দানার পরিষ্কার চাল। হোটেল, মেস ও নিয়মিত পারিবারিক ব্যবহারে জনপ্রিয়।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">সাগর, বুশরা, জহুরা</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=আটাশ+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 6. পাইজাম -->
+            <div class="product-card" data-category="regular">
                 <img src="paijam.jpg" alt="পাইজাম">
                 <div class="product-info">
                     <h3>দেশি পাইজাম চাল</h3>
-                    <p>ঝরঝরে ও সুস্বাদু ঐতিহ্যবাহী দেশি জাতের পাইজাম চাল।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>ঝরঝরে ও সুস্বাদু ঐতিহ্যবাহী দেশি পাইজাম। রান্নার পর আকার চমৎকার বাড়ে।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">দেশি মিলের বাছাইকৃত</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=পাইজাম+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 7. স্বর্ণা -->
+            <div class="product-card" data-category="regular">
                 <img src="swarna.jpg" alt="স্বর্ণা">
                 <div class="product-info">
                     <h3>স্বর্ণা চাউল</h3>
-                    <p>পুষ্টিকর ও ভালো ভাতের চাল। সাশ্রয়ী পাইকারি দরে পাওয়া যায়।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>পুষ্টিকর ও কম মূল্যের সবচেয়ে সাশ্রয়ী পাইকারি চাল। হোটেল ও ক্যান্টিনে সেরা।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ৫০ কেজি</span>
+                        <span class="brand-tag">নওগাঁ ও বগুড়ার মিল</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=স্বর্ণা+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 8. হাসকি -->
+            <div class="product-card" data-category="regular">
                 <img src="haski.jpg" alt="হাসকি">
                 <div class="product-info">
                     <h3>হাসকি চাউল</h3>
-                    <p>খাঁটি ও প্রাকৃতিক স্বাদের হাসকি চাল। নিয়মিত ভাতের উত্তম পছন্দ।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>প্রথাগত ও প্রাকৃতিক স্বাদের আসল হাসকি চাল। নিয়মিত সাধারণ ভাতের চাল।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ৫০ কেজি</span>
+                        <span class="brand-tag">বিশ্বস্ত আড়ত কালেকশন</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=হাসকি+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 9. আতপ -->
+            <div class="product-card" data-category="aroma">
                 <img src="atop.jpg" alt="আতপ">
                 <div class="product-info">
                     <h3>সাদা আতপ চাউল</h3>
-                    <p>পিঠা, পায়েস, খিচুড়ি ও বিশেষ অনুষ্ঠানের নিখুঁত আতপ চাল।</p>
-                    <span class="meta-tag">বস্তা: ২৫ কেজি / ৫০ কেজি</span>
+                    <p>পিঠা, পায়েস, খিচুড়ি ও বিশেষ অনুষ্ঠানের নিখুঁত ধবধবে সাদা আতপ চাল।</p>
+                    <div class="badges-wrapper">
+                        <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
+                        <span class="brand-tag">দিনাজপুরের মিল</span>
+                    </div>
                     <a href="https://wa.me/8801320395462?text=আতপ+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
+
         </div>
+
+        <!-- Extra Products & Bulk Inquiries -->
+        <div class="other-products-box">
+            <h3><i class="fa-solid fa-boxes-stacked"></i> তালিকায় নেই এমন অন্যান্য বিশেষ চাউলসমূহ</h3>
+            <p style="color: var(--text-muted);">উপরের তালিকা ছাড়াও আমাদের আড়তে সবসময় নিচের জাত ও ব্র্যান্ডের চাল বস্তা হিসেবে প্রস্তুত থাকে:</p>
+            
+            <div class="other-chips">
+                <div class="chip"><i class="fa-solid fa-check"></i> জিরাশাইল চাল</div>
+                <div class="chip"><i class="fa-solid fa-check"></i> কাটারিভোগ চাল</div>
+                <div class="chip"><i class="fa-solid fa-check"></i> বিআর-২৯ (উনত্রিশ) চাল</div>
+                <div class="chip"><i class="fa-solid fa-check"></i> সুগন্ধি কালজিরা চাল</div>
+                <div class="chip"><i class="fa-solid fa-check"></i> লাল চাউল (ঢেঁকি ছাঁটা)</div>
+                <div class="chip"><i class="fa-solid fa-check"></i> মোট আতপ ও ক্ষীরভোগ</div>
+                <div class="chip"><i class="fa-solid fa-check"></i> চালের খুদ</div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="https://wa.me/8801320395462?text=বিশেষ+জাতের+চালের+জন্য+যোগাযোগ+করছি" class="order-btn" style="display: inline-flex; padding: 10px 25px;" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> যেকোনো ব্র্যান্ড বা জাতের চালের রেট সরাসরি জানতে ক্লিক করুন
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <footer>
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
+
+    <!-- Interactive Filtering & Search Script -->
+    <script>
+        function filterItems() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if(text.includes(input)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategory(category) {
+            let buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            let cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if(category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
