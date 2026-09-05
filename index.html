@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>মেসার্স সোনালী ট্রেডার্স - প্রসিদ্ধ চাউলের আড়ৎ</title>
+    <title>মেসার্স সোনালী ট্রেডার্স - প্রসিদ্ধ চাউলের আড়ৎ</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -73,6 +73,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.8rem 1.5rem;
+            position: relative;
         }
 
         .brand-container {
@@ -107,6 +108,7 @@
             display: flex;
             list-style: none;
             gap: 22px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -118,6 +120,42 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Free Delivery Highlight Strip */
+        .free-delivery-strip {
+            background: linear-gradient(90deg, #b45309, #d97706, #b45309);
+            color: #ffffff;
+            padding: 9px 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.96rem;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .free-delivery-strip .badge {
+            background: #ffffff;
+            color: #b45309;
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 700;
         }
 
         /* Hero Section */
@@ -403,13 +441,43 @@
             margin-top: 3rem;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
+        /* Mobile Responsive Styles */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
                 flex-direction: column;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #e2e8f0;
                 gap: 12px;
             }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
             .hero h2 {
                 font-size: 2.1rem;
+            }
+
+            .free-delivery-strip {
+                font-size: 0.88rem;
+                padding: 8px 10px;
             }
         }
     </style>
@@ -418,7 +486,7 @@
 
     <!-- Top Info Bar -->
     <div class="top-bar">
-        <span><i class="fa-solid fa-bullhorn"></i> দেশের শীর্ষস্থানীয় সকল ব্র্যান্ডের অরিজিনাল চাউল সরাসরি মিল রেটে পাইকারি সরবরাহ করা হয়</span>
+        <span><i class="fa-solid fa-bullhorn"></i> দেশের শীর্ষস্থানীয় সকল ব্র্যান্ডের অরিজিনাল চাউল সরাসরি মিল রেটে পাইকারি সরবরাহ করা হয়</span>
         <div>
             হটলাইন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a>
         </div>
@@ -431,10 +499,17 @@
                 <img src="logo.png" alt="মেসার্স সোনালী ট্রেডার্স লোগো" class="brand-logo">
                 <div class="brand-text">
                     <h1>মেসার্স সোনালী ট্রেডার্স</h1>
-                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
                 </div>
             </a>
-            <ul class="nav-links">
+
+            <!-- Mobile Hamburger Toggle Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="মোবাইল মেনু">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">হোম</a></li>
                 <li><a href="products.html">চালের তালিকা</a></li>
                 <li><a href="wholesale.html">পাইকারি সরবরাহ</a></li>
@@ -445,11 +520,17 @@
         </div>
     </header>
 
+    <!-- Free Delivery Highlight Strip -->
+    <div class="free-delivery-strip">
+        <span class="badge"><i class="fa-solid fa-gift"></i> বিশেষ সুবিধা</span>
+        <span><i class="fa-solid fa-truck-fast"></i> চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি ও তারগাছে <strong>নিজস্ব গাড়িতে সম্পূর্ণ ফ্রি ডেলিভারি</strong> (কোনো গাড়ি ভাড়া বা লেবার চার্জ নেই)!</span>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-badge"><i class="fa-solid fa-medal"></i> ১০০% অরিজিনাল মিল ও ব্র্যান্ড চালের বিশ্বস্ত ঠিকানা</div>
-        <h2>বাংলাদেশের স্বনামধন্য কোম্পানির চালের পাইকারি আড়ৎ</h2>
-        <p>দিনাজপুর, নওগাঁ, কুষ্টিয়া ও দেশের সেরা মিল ও ব্র্যান্ডের প্রিমিয়াম কোয়ালিটি চাউল নিশ্চিত সুলভ পাইকারি মূল্যে সরবরাহ করা হয়।</p>
+        <h2>বাংলাদেশের স্বনামধন্য কোম্পানির চালের পাইকারি আড়ৎ</h2>
+        <p>দিনাজপুর, নওগাঁ, কুষ্টিয়া ও দেশের সেরা মিল ও ব্র্যান্ডের প্রিমিয়াম কোয়ালিটি চাউল নিশ্চিত সুলভ পাইকারি মূল্যে সরবরাহ করা হয়।</p>
         <div class="hero-buttons">
             <a href="products.html" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> চালের ক্যাটালগ দেখুন</a>
             <a href="https://wa.me/8801320395462" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> সরাসরি রেট জানুন</a>
@@ -460,28 +541,28 @@
     <section class="section">
         <div class="section-title-wrap">
             <h2 class="section-title">কেন আমাদের থেকে নিবেন?</h2>
-            <p class="section-subtitle">গুণগত মান, বিশ্বস্ত ব্র্যান্ড ও সঠিক ওজনে শতভাগ নিশ্চয়তা</p>
+            <p class="section-subtitle">গুণগত মান, বিশ্বস্ত ব্র্যান্ড ও সঠিক ওজনে শতভাগ নিশ্চয়তা</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
                 <i class="fa-solid fa-certificate"></i>
                 <h3>১০০% অরিজিনাল ব্র্যান্ড</h3>
-                <p>সব নামী কোম্পানির সিল ও স্টিকার করা অরিজিনাল বস্তা সরাসরি মিল থেকে সরবরাহ করা হয়।</p>
+                <p>সব নামী কোম্পানির সিল ও স্টিকার করা অরিজিনাল বস্তা সরাসরি মিল থেকে সরবরাহ করা হয়।</p>
             </div>
             <div class="feature-card">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
-                <h3>সরাসরি আড়তের দর</h3>
+                <h3>সরাসরি আড়তের দর</h3>
                 <p>হোটেল, রেস্তোরাঁ ও খুচরা ও পাইকারি বিক্রেতাদের জন্য বাজারের সেরা পাইকারি দর নিশ্চিত করি।</p>
             </div>
             <div class="feature-card">
                 <i class="fa-solid fa-scale-balanced"></i>
-                <h3>ডিজিটাল ওজনে নিশ্চয়তা</h3>
-                <p>প্রতিটি বস্তা ডিজিটাল স্কেলে নিখুঁত পরিমাপে মেপে ডেলিভারি নিশ্চিত করা হয়।</p>
+                <h3>ডিজিটাল ওজনে নিশ্চয়তা</h3>
+                <p>প্রতিটি বস্তা ডিজিটাল স্কেলে নিখুঁত পরিমাপে মেপে ডেলিভারি নিশ্চিত করা হয়।</p>
             </div>
             <div class="feature-card">
                 <i class="fa-solid fa-truck-fast"></i>
                 <h3>দ্রুত ডেলিভারি সুবিধা</h3>
-                <p>টঙ্গী সংলগ্ন এলাকায় ভ্যান গাড়ী ও পিকআপ যোগে দ্রুততম সরবরাহ ব্যবস্থা।</p>
+                <p>টঙ্গী সংলগ্ন এলাকায় ভ্যান গাড়ী ও পিকআপ যোগে দ্রুততম সরবরাহ ব্যবস্থা।</p>
             </div>
         </div>
     </section>
@@ -490,7 +571,7 @@
     <section class="section" style="padding-top: 0;">
         <div class="section-title-wrap">
             <h2 class="section-title">যেসব শীর্ষ কোম্পানির চাল আমরা বিক্রি করি</h2>
-            <p class="section-subtitle">দেশের শীর্ষস্থানীয় ও ঐতিহ্যবাহী রাইস মিলের প্রিমিয়াম চাউল একই ছাদের নিচে</p>
+            <p class="section-subtitle">দেশের শীর্ষস্থানীয় ও ঐতিহ্যবাহী রাইস মিলের প্রিমিয়াম চাউল একই ছাদের নিচে</p>
         </div>
 
         <div class="brands-container">
@@ -498,7 +579,7 @@
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-seedling"></i></div>
                 <h3>এসিআই (ACI)</h3>
-                <p>এসিআই পিওর প্রিমিয়াম মিনিকেট, নাজিরশাইল, বাংলামতি, জিরাশাইল, পাইজাম, সিদ্ধ কাটারি ও সুগন্ধি চিনিগুঁড়া চাল।</p>
+                <p>এসিআই পিওর প্রিমিয়াম মিনিকেট, নাজিরশাইল, বাংলামতি, জিরাশাইল, পাইজাম, সিদ্ধ কাটারি ও সুগন্ধি চিনিগুঁড়া চাল।</p>
                 <span class="brand-pill">অরিজিনাল ডিলার রেট</span>
             </div>
 
@@ -506,34 +587,34 @@
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-wheat-awn"></i></div>
                 <h3>মোজাম্মেল রাইস</h3>
                 <p>সুপ্রসিদ্ধ ও সেরা মানের ঝরঝরে মিনিকেট চাউল।</p>
-                <span class="brand-pill">সর্বাধিক জনপ্রিয়</span>
+                <span class="brand-pill">সর্বাধিক জনপ্রিয়</span>
             </div>
 
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-industry"></i></div>
                 <h3>দাদা রাইস (আরশাদ আলী)</h3>
-                <p>কুষ্টিয়ার প্রখ্যাত আরশাদ আলীর দাদা ব্র্যান্ডের ১০০% খাঁটি চাউল।</p>
+                <p>কুষ্টিয়ার প্রখ্যাত আরশাদ আলীর দাদা ব্র্যান্ডের ১০০% খাঁটি চাউল।</p>
                 <span class="brand-pill">ঐতিহ্যবাহী মিল</span>
             </div>
 
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-leaf"></i></div>
                 <h3>দেশ এগ্রো</h3>
-                <p>আধুনিক মেশিনে বাছাইকৃত ও বাংলাদেশের একমাত্র রন্ধন পরীক্ষায় পরীক্ষিত চাল প্রক্রিয়াজাত করন কোম্পানী। প্রিমিয়াম মিনিকেট, কাটারি নাজিরশাইল,বাসমতী, হাসকি ও চিনিগুড়া চাল ।</p>
-                <span class="brand-pill">প্রিমিয়াম কোয়ালিটি</span>
+                <p>আধুনিক মেশিনে বাছাইকৃত ও বাংলাদেশের একমাত্র রন্ধন পরীক্ষায় পরীক্ষিত চাল প্রক্রিয়াজাত করন কোম্পানী। প্রিমিয়াম মিনিকেট, কাটারি নাজিরশাইল,বাসমতী, হাসকি ও চিনিগুড়া চাল ।</p>
+                <span class="brand-pill">প্রিমিয়াম কোয়ালিটি</span>
             </div>
 
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-bag-shopping"></i></div>
                 <h3>ফ্রেশ (Fresh)</h3>
-                <p>মেঘনা গ্রুপের ফ্রেশ প্রিমিয়াম মিনিকেট, স্টীম কাটারি নাজির ও পাইজাম চাল।</p>
+                <p>মেঘনা গ্রুপের ফ্রেশ প্রিমিয়াম মিনিকেট, স্টীম কাটারি নাজির ও পাইজাম চাল।</p>
                 <span class="brand-pill">আস্থা ও মান</span>
             </div>
 
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-shield-heart"></i></div>
                 <h3>পুষ্টি (Pusti)</h3>
-                <p>টি কে গ্রুপের উন্নত গ্রেডের পুষ্টি চাল, প্রিমিয়াম মিনিকেট, কাটারি নবাবীভোগ ও পাইজাম চাল।</p>
+                <p>টি কে গ্রুপের উন্নত গ্রেডের পুষ্টি চাল, প্রিমিয়াম মিনিকেট, কাটারি নবাবীভোগ ও পাইজাম চাল।</p>
                 <span class="brand-pill">সেরা পুষ্টিগুণ</span>
             </div>
 
@@ -555,20 +636,20 @@
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-star"></i></div>
                 <h3>সাগর রাইস</h3>
                 <p>ন্যায্য মূল্যে উন্নতমানের মিনিকেট, নাজিরশাইল, হাসকি ও পাইজাম চাল।</p>
-                <span class="brand-pill">সাশ্রয়ী ও সেরা</span>
+                <span class="brand-pill">সাশ্রয়ী ও সেরা</span>
             </div>
 
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-handshake"></i></div>
                 <h3>বিশ্বাস রাইস</h3>
-                <p>কুষ্টিয়ার বিশ্বস্ত মিলের উন্নত মানের আটাশ ও মিনিকেট চাল।</p>
+                <p>কুষ্টিয়ার বিশ্বস্ত মিলের উন্নত মানের আটাশ ও মিনিকেট চাল।</p>
                 <span class="brand-pill">১০০% নির্ভেজাল</span>
             </div>
 
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
-                <h3>আপ্যায়ন চাউল</h3>
-                <p>উন্নতমানের মিনিকেট, প্রিমিয়াম কোয়ালিটি নাজিরশাইল, হাসকি ও পাইজাম চাল।</p>
+                <h3>আপ্যায়ন চাউল</h3>
+                <p>উন্নতমানের মিনিকেট, প্রিমিয়াম কোয়ালিটি নাজিরশাইল, হাসকি ও পাইজাম চাল।</p>
                 <span class="brand-pill">গৃহিনীদের প্রথম পছন্দ</span>
             </div>
 
@@ -576,14 +657,14 @@
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-store"></i></div>
                 <h3>স্বপ্ন সুপার চাউল</h3>
                 <p>স্বপ্ন সুপার এগ্রো ফুড টাঙ্গাইলের সেরা মানের হাসকি চাউল।</p>
-                <span class="brand-pill">সুপার প্রিমিয়াম</span>
+                <span class="brand-pill">সুপার প্রিমিয়াম</span>
             </div>
 
         </div>
 
         <div class="catalog-banner">
             <h3>চালের সাইজ ও ভ্যারাইটি দেখতে চান?</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.2rem;">মিনিকেট, বাসমতী, নাজিরশাইল, স্বর্ণা, চিনিগুঁড়া, আটাশ সহ সকল ভ্যারাইটি আমাদের রয়েছে।</p>
+            <p style="color: var(--text-muted); margin-bottom: 1.2rem;">মিনিকেট, বাসমতী, নাজিরশাইল, স্বর্ণা, চিনিগুঁড়া, আটাশ সহ সকল ভ্যারাইটি আমাদের রয়েছে।</p>
             <a href="products.html" class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i> পূর্ণাঙ্গ চালের তালিকা ও বিবরণ দেখুন</a>
         </div>
     </section>
@@ -591,7 +672,7 @@
     <!-- Wholesale Section -->
     <section class="section" style="padding-top: 0;">
         <div class="wholesale-banner">
-            <h2><i class="fa-solid fa-truck-ramp-box"></i> বড় বাণিজ্যিক পাইকারি সরবরাহ</h2>
+            <h2><i class="fa-solid fa-truck-ramp-box"></i> বড় বাণিজ্যিক পাইকারি সরবরাহ</h2>
             <p>হোটেল-রেস্তোরাঁ, করপোরেট ক্যান্টিন ও যেকোনো প্রতিষ্ঠানের বাল্ক চাল বুকিং করতে সরাসরি যোগাযোগ করুন।</p>
             <a href="wholesale.html" class="btn btn-primary" style="background: #ffffff; color: var(--primary-dark); font-weight: 700;">পাইকারি বিস্তারিত জানুন</a>
         </div>
@@ -601,26 +682,26 @@
     <section class="section" style="padding-top: 0;">
         <div class="section-title-wrap">
             <h2 class="section-title">আমাদের ঠিকানা ও আউটলেটসমূহ</h2>
-            <p class="section-subtitle">সরাসরি আড়তে এসে চাল পরখ করে নেওয়ার জন্য সাদর আমন্ত্রণ</p>
+            <p class="section-subtitle">সরাসরি আড়তে এসে চাল পরখ করে নেওয়ার জন্য সাদর আমন্ত্রণ</p>
         </div>
 
         <div class="contact-grid">
             <div class="branch-card">
                 <h3><i class="fa-solid fa-shop"></i> প্রধান শাখা</h3>
-                <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
+                <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
                 <p style="margin-top: 6px; font-weight: 600;">ফোন: ০১৩২০-৩৯৫৪৬২, ০১৩২০-৩৯৫৪৭১</p>
             </div>
 
             <div class="branch-card">
                 <h3><i class="fa-solid fa-building"></i> ইউনিট-০২</h3>
-                <p>হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।</p>
+                <p>হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।</p>
                 <p style="margin-top: 6px; font-weight: 600;">ফোন: ০১৩২০-৩৯৫৪৬২, ০১৭৪২-৮৩১৪৭৬</p>
             </div>
         </div>
 
         <div class="phone-banner-box">
             <h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 5px;">যেকোনো তথ্য ও সরাসরি চালের অর্ডারের জন্য:</h3>
-            <p style="color: var(--text-muted);">সকাল ৯:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে</p>
+            <p style="color: var(--text-muted);">সকাল ৯:০০ টা থেকে রাত ১০:০০ টা পর্যন্ত আড়ৎ খোলা থাকে</p>
             <a href="tel:01320395462"><i class="fa-solid fa-phone-volume"></i> ০১৩২০-৩৯৫৪৬২</a>
         </div>
     </section>
@@ -628,8 +709,27 @@
     <!-- Footer -->
     <footer>
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
-        <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
+        <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
     </footer>
+
+    <!-- Mobile Hamburger Menu JavaScript -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+    </script>
 
 </body>
 </html>
