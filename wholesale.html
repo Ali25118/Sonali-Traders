@@ -8,20 +8,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        :root { --primary: #15803d; --primary-dark: #166534; --accent: #d97706; --text-dark: #1f2937; --text-muted: #4b5563; --bg-light: #f8fafc; --white: #ffffff; }
+        :root { 
+            --primary: #15803d; 
+            --primary-dark: #166534; 
+            --accent: #d97706; 
+            --text-dark: #1f2937; 
+            --text-muted: #4b5563; 
+            --bg-light: #f8fafc; 
+            --white: #ffffff; 
+        }
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Hind Siliguri',sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
         .top-bar { background-color: var(--primary-dark); color: #fff; padding: 8px 15px; font-size: 0.95rem; text-align: center; }
         .top-bar a { color: #fef08a; text-decoration: none; font-weight: bold; }
         header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top:0; z-index:100; }
-        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; }
+        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; position: relative; }
         .brand-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .brand-logo { width: 50px; height: 50px; object-fit: contain; }
         .brand-text h1 { font-size: 1.4rem; color: var(--primary); font-weight: 700; margin: 0; }
         .brand-text span { font-size: 0.85rem; color: var(--accent); font-weight: 600; display: block; }
-        .nav-links { display: flex; list-style: none; gap: 20px; }
+        
+        .nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        
+        /* Mobile Hamburger Button */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+        }
+
         .page-header { background: linear-gradient(rgba(22,101,52,0.9), rgba(21,128,61,0.9)), url('miniket.jpg') center/cover; color: #fff; text-align: center; padding: 3.5rem 1.5rem; }
         .container { max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; }
         .info-box { background: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 2rem; border-left: 5px solid var(--accent); }
@@ -32,21 +53,45 @@
         .booking-card { background: #ecfdf5; border: 2px dashed var(--primary); padding: 2rem; border-radius: 12px; text-align: center; }
         .btn-call { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin-top: 15px; }
         footer { background: var(--primary-dark); color: #fff; text-align: center; padding: 1.5rem; margin-top: 3rem; }
-        @media(max-width:768px){ .navbar { flex-direction: column; gap: 10px; } }
+
+        @media(max-width: 900px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #e2e8f0;
+                gap: 12px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+        }
     </style>
 </head>
 <body>
-    <div class="top-bar">পাইকারি চাউলের সরাসরি আড়ৎ | কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a></div>
+    <div class="top-bar">পাইকারি চাউলের সরাসরি আড়ৎ | কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a></div>
     <header>
         <div class="navbar">
             <a href="index.html" class="brand-container">
                 <img src="logo.png" alt="লোগো" class="brand-logo">
                 <div class="brand-text">
                     <h1>মেসার্স সোনালী ট্রেডার্স</h1>
-                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
                 </div>
             </a>
-            <ul class="nav-links">
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="মোবাইল মেনু">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">হোম</a></li>
                 <li><a href="products.html">চালের তালিকা</a></li>
                 <li><a href="wholesale.html" class="active">পাইকারি সরবরাহ</a></li>
@@ -68,14 +113,14 @@
             <ul class="feature-list">
                 <li><i class="fa-solid fa-circle-check"></i> হোটেল ও রেস্তোরাঁ </li>
                 <li><i class="fa-solid fa-circle-check"></i> কারখানা ও কর্পোরেট ক্যান্টিন</li>
-                <li><i class="fa-solid fa-circle-check"></i> বিয়ে ও সামাজিক অনুষ্ঠানের ক্যাটারিং সার্ভিস</li>
-                <li><i class="fa-solid fa-circle-check"></i> স্থানীয় মুদি ও চাউল বিক্রেতা</li>
+                <li><i class="fa-solid fa-circle-check"></i> বিয়ে ও সামাজিক অনুষ্ঠানের ক্যাটারিং সার্ভিস</li>
+                <li><i class="fa-solid fa-circle-check"></i> স্থানীয় মুদি ও চাউল বিক্রেতা</li>
             </ul>
         </div>
 
         <div class="booking-card">
             <h3 style="color: var(--primary); font-size: 1.5rem;">আজকের পাইকারি চালের বাজার দর ও বিস্তারিত জানতে বা অর্ডার করতে</h3>
-            <p style="color: var(--text-muted); margin-top: 5px;">১০ বস্তা বা তার অধিক অর্ডারে বিশেষ ছাড় ও ফ্রি ডেলিভারি দেওয়া হয়।</p>
+            <p style="color: var(--text-muted); margin-top: 5px;">১০ বস্তা বা তার অধিক অর্ডারে বিশেষ ছাড় ও ফ্রি ডেলিভারি দেওয়া হয়।</p>
             <a href="tel:01320395462" class="btn-call"><i class="fa-solid fa-phone"></i> সরাসরি কথা বলুন: ০১৩২০-৩৯৫৪৬২</a>
         </div>
     </div>
@@ -83,5 +128,23 @@
     <footer>
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
