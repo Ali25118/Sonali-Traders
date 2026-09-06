@@ -25,15 +25,27 @@
         .top-bar a { color: #fef08a; text-decoration: none; font-weight: bold; }
         
         header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.06); position: sticky; top:0; z-index:100; }
-        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; }
+        .navbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1.5rem; position: relative; }
         .brand-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
         .brand-logo { width: 50px; height: 50px; object-fit: contain; }
         .brand-text h1 { font-size: 1.4rem; color: var(--primary); font-weight: 700; margin: 0; }
         .brand-text span { font-size: 0.85rem; color: var(--accent); font-weight: 600; display: block; }
-        .nav-links { display: flex; list-style: none; gap: 20px; }
+        
+        .nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         
+        /* Mobile Hamburger Button */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+        }
+
         .page-header { background: linear-gradient(rgba(22,101,52,0.9), rgba(21,128,61,0.9)), url('miniket.jpg') center/cover; color: #fff; text-align: center; padding: 3.5rem 1.5rem; }
         .page-header h2 { font-size: 2.3rem; margin-bottom: 0.5rem; }
         
@@ -107,7 +119,7 @@
             box-shadow: var(--card-shadow); 
             border: 1px solid #e5e7eb; 
             display: flex; 
-            flex-direction: column;
+            flex-direction: column; 
             transition: transform 0.3s;
         }
         .product-card:hover { transform: translateY(-4px); }
@@ -165,21 +177,45 @@
         .chip i { color: var(--primary); }
 
         footer { background: var(--primary-dark); color: #fff; text-align: center; padding: 1.5rem; margin-top: 3rem; }
-        @media(max-width:768px){ .navbar { flex-direction: column; gap: 10px; } }
+        
+        @media(max-width: 900px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #e2e8f0;
+                gap: 12px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+        }
     </style>
 </head>
 <body>
-    <div class="top-bar">সরাসরি পাইকারি চাউলের আড়ৎ | কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a></div>
+    <div class="top-bar">সরাসরি পাইকারি চাউলের আড়ৎ | কল করুন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a></div>
     <header>
         <div class="navbar">
             <a href="index.html" class="brand-container">
                 <img src="logo.png" alt="লোগো" class="brand-logo">
                 <div class="brand-text">
                     <h1>মেসার্স সোনালী ট্রেডার্স</h1>
-                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
                 </div>
             </a>
-            <ul class="nav-links">
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="মোবাইল মেনু">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">হোম</a></li>
                 <li><a href="products.html" class="active">চালের তালিকা</a></li>
                 <li><a href="wholesale.html">পাইকারি সরবরাহ</a></li>
@@ -192,7 +228,7 @@
 
     <div class="page-header">
         <h2>আমাদের সকল চালের ক্যাটালগ</h2>
-        <p>দিনাজপুর, কুষ্টিয়া, চাপাইনবাবগঞ্জ, নওগাঁ এবং বাংলাদেশের শীর্ষ মিল থেকে সংগৃহীত শতভাগ খাঁটি ও বাছাইকৃত চাল</p>
+        <p>দিনাজপুর, কুষ্টিয়া, চাপাইনবাবগঞ্জ, নওগাঁ এবং বাংলাদেশের শীর্ষ মিল থেকে সংগৃহীত শতভাগ খাঁটি ও বাছাইকৃত চাল</p>
     </div>
 
     <div class="container">
@@ -205,7 +241,7 @@
             </div>
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterCategory('all')">সকল চাল</button>
-                <button class="filter-btn" onclick="filterCategory('premium')">প্রিমিয়াম / চিকন</button>
+                <button class="filter-btn" onclick="filterCategory('premium')">প্রিমিয়াম / চিকন</button>
                 <button class="filter-btn" onclick="filterCategory('regular')">দৈনন্দিন / রেগুলার</button>
                 <button class="filter-btn" onclick="filterCategory('aroma')">পোলাও / সুগন্ধি</button>
             </div>
@@ -219,7 +255,7 @@
                 <img src="miniket.jpg" alt="মিনিকেট">
                 <div class="product-info">
                     <h3>প্রিমিয়াম মিনিকেট চাল</h3>
-                    <p>চকচকে, সাদা ও লম্বা দানার প্রিমিয়াম মিনিকেট। ভাত হবে ঝরঝরে ও নরম।</p>
+                    <p>চকচকে, সাদা ও লম্বা দানার প্রিমিয়াম মিনিকেট। ভাত হবে ঝরঝরে ও নরম।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
                         <span class="brand-tag">এসিআই, মোজাম্মেল, ফ্রেশ</span>
@@ -256,17 +292,17 @@
                 </div>
             </div>
 
-            <!-- 4. চিনিগুঁড়া -->
+            <!-- 4. চিনিগুঁড়া -->
             <div class="product-card" data-category="aroma">
-                <img src="chinigura.jpg" alt="চিনিগুঁড়া">
+                <img src="chinigura.jpg" alt="চিনিগুঁড়া">
                 <div class="product-info">
                     <h3>সুগন্ধি চিনিগুঁড়া চাল</h3>
-                    <p>দিনাজপুরের চমৎকার সুবাসযুক্ত চিনিগুঁড়া চাল। পোলাও, বিরিয়ানি ও পায়েসের জন্য।</p>
+                    <p>দিনাজপুরের চমৎকার সুবাসযুক্ত চিনিগুঁড়া চাল। পোলাও, বিরিয়ানি ও পায়েসের জন্য।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
                         <span class="brand-tag">এসিআই, ফ্রেশ, পুষ্টি</span>
                     </div>
-                    <a href="https://wa.me/8801320395462?text=চিনিগুঁড়া+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
+                    <a href="https://wa.me/8801320395462?text=চিনিগুঁড়া+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
             </div>
 
@@ -275,7 +311,7 @@
                 <img src="atash.jpg" alt="আটাশ">
                 <div class="product-info">
                     <h3>বিআর-২৮ (আটাশ) চাল</h3>
-                    <p>মাঝারি দানার পরিষ্কার চাল। হোটেল, মেস ও নিয়মিত পারিবারিক ব্যবহারে জনপ্রিয়।</p>
+                    <p>মাঝারি দানার পরিষ্কার চাল। হোটেল, মেস ও নিয়মিত পারিবারিক ব্যবহারে জনপ্রিয়।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
                         <span class="brand-tag">সাগর, বুশরা, জহুরা</span>
@@ -289,7 +325,7 @@
                 <img src="paijam.jpg" alt="পাইজাম">
                 <div class="product-info">
                     <h3>দেশি পাইজাম চাল</h3>
-                    <p>ঝরঝরে ও সুস্বাদু ঐতিহ্যবাহী দেশি পাইজাম। রান্নার পর আকার চমৎকার বাড়ে।</p>
+                    <p>ঝরঝরে ও সুস্বাদু ঐতিহ্যবাহী দেশি পাইজাম। রান্নার পর আকার চমৎকার বাড়ে।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
                         <span class="brand-tag">দেশি মিলের বাছাইকৃত</span>
@@ -303,10 +339,10 @@
                 <img src="swarna.jpg" alt="স্বর্ণা">
                 <div class="product-info">
                     <h3>স্বর্ণা চাউল</h3>
-                    <p>পুষ্টিকর ও কম মূল্যের সবচেয়ে সাশ্রয়ী পাইকারি চাল। হোটেল ও ক্যান্টিনে সেরা।</p>
+                    <p>পুষ্টিকর ও কম মূল্যের সবচেয়ে সাশ্রয়ী পাইকারি চাল। হোটেল ও ক্যান্টিনে সেরা।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ৫০ কেজি</span>
-                        <span class="brand-tag">নওগাঁ ও বগুড়ার মিল</span>
+                        <span class="brand-tag">নওগাঁ ও বগুড়ার মিল</span>
                     </div>
                     <a href="https://wa.me/8801320395462?text=স্বর্ণা+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
@@ -317,10 +353,10 @@
                 <img src="haski.jpg" alt="হাসকি">
                 <div class="product-info">
                     <h3>হাসকি চাউল</h3>
-                    <p>প্রথাগত ও প্রাকৃতিক স্বাদের আসল হাসকি চাল। নিয়মিত সাধারণ ভাতের চাল।</p>
+                    <p>প্রথাগত ও প্রাকৃতিক স্বাদের আসল হাসকি চাল। নিয়মিত সাধারণ ভাতের চাল।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ৫০ কেজি</span>
-                        <span class="brand-tag">বিশ্বস্ত আড়ত কালেকশন</span>
+                        <span class="brand-tag">বিশ্বস্ত আড়ত কালেকশন</span>
                     </div>
                     <a href="https://wa.me/8801320395462?text=হাসকি+চালের+রেট+জানতে+চাই" class="order-btn" target="_blank"><i class="fa-brands fa-whatsapp"></i> অর্ডার / রেট জানুন</a>
                 </div>
@@ -331,7 +367,7 @@
                 <img src="atop.jpg" alt="আতপ">
                 <div class="product-info">
                     <h3>সাদা আতপ চাউল</h3>
-                    <p>পিঠা, পায়েস, খিচুড়ি ও বিশেষ অনুষ্ঠানের নিখুঁত ধবধবে সাদা আতপ চাল।</p>
+                    <p>পিঠা, পায়েস, খিচুড়ি ও বিশেষ অনুষ্ঠানের নিখুঁত ধবধবে সাদা আতপ চাল।</p>
                     <div class="badges-wrapper">
                         <span class="meta-tag">বস্তা: ২৫/৫০ কেজি</span>
                         <span class="brand-tag">দিনাজপুরের মিল</span>
@@ -344,8 +380,8 @@
 
         <!-- Extra Products & Bulk Inquiries -->
         <div class="other-products-box">
-            <h3><i class="fa-solid fa-boxes-stacked"></i> তালিকায় নেই এমন অন্যান্য বিশেষ চাউলসমূহ</h3>
-            <p style="color: var(--text-muted);">উপরের তালিকা ছাড়াও আমাদের আড়তে সবসময় নিচের জাত ও ব্র্যান্ডের চাল বস্তা হিসেবে প্রস্তুত থাকে:</p>
+            <h3><i class="fa-solid fa-boxes-stacked"></i> তালিকায় নেই এমন অন্যান্য বিশেষ চাউলসমূহ</h3>
+            <p style="color: var(--text-muted);">উপরের তালিকা ছাড়াও আমাদের আড়তে সবসময় নিচের জাত ও ব্র্যান্ডের চাল বস্তা হিসেবে প্রস্তুত থাকে:</p>
             
             <div class="other-chips">
                 <div class="chip"><i class="fa-solid fa-check"></i> জিরাশাইল চাল</div>
@@ -370,7 +406,7 @@
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <!-- Interactive Filtering & Search Script -->
+    <!-- Interactive Filtering & Search Script + Mobile Menu Toggle -->
     <script>
         function filterItems() {
             let input = document.getElementById('searchInput').value.toLowerCase();
@@ -400,6 +436,22 @@
                 }
             });
         }
+
+        // Mobile Hamburger Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
     </script>
 </body>
 </html>
