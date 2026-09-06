@@ -66,6 +66,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.8rem 1.5rem;
+            position: relative;
         }
 
         .brand-container {
@@ -99,6 +100,7 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -110,6 +112,17 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
+        }
+
+        /* Mobile Hamburger Button */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
         }
 
         /* Hero Banner */
@@ -339,23 +352,52 @@
             margin-top: 3rem;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
+        /* Mobile Responsive Styles */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
                 flex-direction: column;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #e2e8f0;
                 gap: 12px;
             }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
             .product-row {
                 flex-wrap: wrap;
             }
+
             .product-row .prod-name {
                 flex: 100%;
             }
+
             .product-row .prod-weight {
                 flex: 1;
             }
+
             .product-row .prod-qty {
                 flex: 1;
             }
+
             .btn-submit {
                 width: 100%;
             }
@@ -376,10 +418,16 @@
                 <img src="logo.png" alt="মেসার্স সোনালী ট্রেডার্স লোগো" class="brand-logo">
                 <div class="brand-text">
                     <h1>মেসার্স সোনালী ট্রেডার্স</h1>
-                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
                 </div>
             </a>
-            <ul class="nav-links">
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="মোবাইল মেনু">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">হোম</a></li>
                 <li><a href="products.html">চালের তালিকা</a></li>
                 <li><a href="wholesale.html">পাইকারি সরবরাহ</a></li>
@@ -394,7 +442,7 @@
     <div class="page-header">
         <span>খুচরা ও পাইকারি অর্ডার</span>
         <h2>আপনার চালের অর্ডার দিন</h2>
-        <p>নিচের ফর্মটি পূরণ করুন — জমা দিলেই আপনার তথ্যসহ একটা বার্তা তৈরি হয়ে সরাসরি আমাদের হোয়াটসঅ্যাপে চলে যাবে। ব্র্যান্ড, পরিমাণ ও এলাকা অনুযায়ী আমরা দ্রুত রেট ও ডেলিভারির সময় জানিয়ে দেব।</p>
+        <p>নিচের ফর্মটি পূরণ করুন — জমা দিলেই আপনার তথ্যসহ একটা বার্তা তৈরি হয়ে সরাসরি আমাদের হোয়াটসঅ্যাপে চলে যাবে। ব্র্যান্ড, পরিমাণ ও এলাকা অনুযায়ী আমরা দ্রুত রেট ও ডেলিভারির সময় জানিয়ে দেব।</p>
     </div>
 
     <!-- Main Container -->
@@ -402,7 +450,7 @@
 
         <!-- Informative Alert -->
         <div class="notice-box">
-            যেহেতু আমরা পাইকারি বিক্রেতা, তাই জাত, পরিমাণ ও এলাকাভেদে দাম ভিন্ন হয় — তাই ওয়েবসাইটে নির্দিষ্ট রেট দেখানো হয় না। ফর্ম পাঠালে আমরা সঠিক রেট সরাসরি জানিয়ে দেব।
+            যেহেতু আমরা পাইকারি বিক্রেতা, তাই জাত, পরিমাণ ও এলাকাভেদে দাম ভিন্ন হয় — তাই ওয়েবসাইটে নির্দিষ্ট রেট দেখানো হয় না। ফর্ম পাঠালে আমরা সঠিক রেট সরাসরি জানিয়ে দেব।
         </div>
 
         <!-- Form Section -->
@@ -457,12 +505,12 @@
                 <!-- Extra Notes -->
                 <div class="form-group" style="margin-bottom: 1.2rem;">
                     <label for="extraNotes">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
-                    <textarea id="extraNotes" class="form-control" rows="3" placeholder="আপনার প্রয়োজন সম্পর্কে বিস্তারিত লিখুন"></textarea>
+                    <textarea id="extraNotes" class="form-control" rows="3" placeholder="আপনার প্রয়োজন সম্পর্কে বিস্তারিত লিখুন"></textarea>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" class="btn-submit">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> হোয়াটসঅ্যাপে অর্ডার পাঠান
                 </button>
             </form>
         </div>
@@ -475,7 +523,7 @@
             </div>
             <div class="info-card">
                 <h4><i class="fa-solid fa-store"></i> প্রধান শাখায় আসুন</h4>
-                <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
+                <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
             </div>
         </div>
 
@@ -486,7 +534,7 @@
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <!-- JavaScript for Dynamic Rows & WhatsApp Message -->
+    <!-- JavaScript for Dynamic Rows, WhatsApp Message & Mobile Hamburger Menu -->
     <script>
         // নতুন রো যোগ করার ফাংশন
         function addProductRow() {
@@ -515,7 +563,7 @@
             }
         }
 
-        // হোয়াটসঅ্যাপে মেসেজ পাঠানোর ফাংশন
+        // হোয়াটসঅ্যাপে মেসেজ পাঠানোর ফাংশন
         function sendToWhatsApp(e) {
             e.preventDefault();
 
@@ -550,15 +598,31 @@
             message += `*চালের তালিকা ও বস্তার ওজন:*\n${productListText}\n`;
             if (notes) message += `*অতিরিক্ত তথ্য:* ${notes}\n`;
             message += `-------------------------\n`;
-            message += `(মেসার্স সোনালী ট্রেডার্স ওয়েবসাইট থেকে প্রেরিত)`;
+            message += `(মেসার্স সোনালী ট্রেডার্স ওয়েবসাইট থেকে প্রেরিত)`;
 
-            // সোনালী ট্রেডার্সের হোয়াটসঅ্যাপ নম্বর
+            // সোনালী ট্রেডার্সের হোয়াটসঅ্যাপ নম্বর
             const targetPhone = "8801320395462";
             const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
 
-            // নতুন ট্যাবে হোয়াটসঅ্যাপ চালু করা
+            // নতুন ট্যাবে হোয়াটসঅ্যাপ চালু করা
             window.open(whatsappUrl, '_blank');
         }
+
+        // Mobile Hamburger Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
     </script>
 </body>
 </html>
