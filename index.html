@@ -263,7 +263,7 @@
             font-size: 1.05rem;
         }
 
-        /* Features with Smooth Hover Animation */
+        /* Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -277,7 +277,7 @@
             text-align: center;
             box-shadow: var(--card-shadow);
             border-top: 4px solid var(--primary);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-top-color 0.35s ease;
         }
 
         .feature-card:hover {
@@ -302,7 +302,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Partner Brands Showcase with Smooth Hover Animation */
+        /* Partner Brands Showcase */
         .brands-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -415,7 +415,7 @@
             margin: 0 auto 2rem;
         }
 
-        /* FAQ Accordion Styles */
+        /* FAQ Accordion Styles (সংশোধিত: লেখা আর কখনোই কাটবে না) */
         .faq-container {
             max-width: 900px;
             margin: 0 auto;
@@ -428,9 +428,8 @@
             background: var(--white);
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: var(--card-shadow);
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .faq-item:hover {
@@ -476,7 +475,7 @@
             color: var(--primary);
             font-size: 0.95rem;
             flex-shrink: 0;
-            transition: transform 0.35s ease, background 0.3s, color 0.3s;
+            transition: transform 0.3s ease, background 0.3s, color 0.3s;
         }
 
         .faq-item.active .faq-icon-box {
@@ -486,19 +485,19 @@
         }
 
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
-            padding: 0 1.5rem;
+            display: none;
+            padding: 0.8rem 1.5rem 1.4rem;
             background: #fafafa;
             color: var(--text-muted);
             font-size: 1.02rem;
-            line-height: 1.7;
+            line-height: 1.8;
+            border-top: 1px solid #f1f5f9;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
 
         .faq-item.active .faq-answer {
-            padding: 0.8rem 1.5rem 1.4rem;
-            border-top: 1px solid #f1f5f9;
+            display: block;
         }
 
         /* Branches Preview */
@@ -816,7 +815,7 @@
                     <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>খুচরা পারিবারিক ব্যবহারের জন্য <strong>১ বস্তা (২৫ কেজি বা ৫০ কেজি)</strong> থেকেই অর্ডার নেওয়া হয়। তবে হোটেল, মেস বা মুদি দোকানের পাইকারি সুবিধার জন্য ১০ বস্তা বা তার অধিক অর্ডারে বিশেষ পাইকারি মিল রেট ও ফ্রি ডেলিভারি প্রদান করা হয়।</p>
+                    <p>খুচরা পারিবারিক ব্যবহারের জন্য <strong>১ বস্তা (২৫ কেজি বা ৫০ কেজি)</strong> থেকেই অর্ডার নেওয়া হয়। তবে মুদি ও পাইকারি দোকানের সুবিধার জন্য ১০ বস্তা বা তার অধিক অর্ডারে বিশেষ পাইকারি রেট ও ফ্রি ডেলিভারি প্রদান করা হয়।</p>
                 </div>
             </div>
 
@@ -827,7 +826,7 @@
                     <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>আমাদের নিজস্ব পরিবহন বহরে টঙ্গী, চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি ও তারগাছে সম্পূর্ণ ফ্রিতে ডেলিভারি দেওয়া হয়। এছাড়া বড় পাইকারি লটের ক্ষেত্রে ঢাকা ও গাজীপুরের যেকোনো এলাকায় পরিবহন খরচের সমন্বয়ে সরাসরি চাল পৌঁছে দেওয়া সম্ভব।</p>
+                    <p>আমাদের নিজস্ব পরিবহন বহরে টঙ্গী, চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি, তারগাছ ও পার্শবর্তী এলাকাই সম্পূর্ণ ফ্রিতে ডেলিভারি দেওয়া হয়। এছাড়া বড় পাইকারি অর্ডারের ক্ষেত্রে ঢাকা ও গাজীপুরের যেকোনো এলাকায় পরিবহন খরচের সমন্বয়ে সরাসরি চাল পৌঁছে দেওয়া সম্ভব।</p>
                 </div>
             </div>
 
@@ -838,7 +837,7 @@
                     <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>আমরা কাস্টমারদের সুবিধার জন্য <strong>ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে মূল্য পরিশোধ)</strong> গ্রহণ করে থাকি। এছাড়াও বিকাশ, নগদ কিংবা আমাদের অফিশিয়াল ব্যাংক অ্যাকাউন্টের মাধ্যমেও সহজে পেমেন্ট করা যায়।</p>
+                    <p>আমরা কাস্টমারদের সুবিধার জন্য <strong>ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে মূল্য পরিশোধ)</strong> গ্রহণ করে থাকি। এছাড়াও বিকাশ, নগদ কিংবা আমাদের অফিশিয়াল ব্যাংক অ্যাকাউন্টের মাধ্যমেও সহজে পেমেন্ট করা যায়।</p>
                 </div>
             </div>
 
@@ -849,7 +848,7 @@
                     <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>হ্যাঁ, অবশ্যই! আমাদের নিজস্ব দায়িত্বশীল ডেলিভারি টিম গাড়ি থেকে বস্তা নামিয়ে সরাসরি আপনার দোকান, রেস্তোরাঁ বা গোডাউনে সুন্দরভাবে উঠিয়ে দিয়ে আসে। এর জন্য আপনাকে কোনো প্রকার লেবার চার্জ দিতে হয় না।</p>
+                    <p>হ্যাঁ, অবশ্যই! আমাদের নিজস্ব দায়িত্বশীল ডেলিভারি টিম গাড়ি থেকে বস্তা নামিয়ে সরাসরি আপনার দোকান, রেস্তোরাঁ বা গোডাউনে সুন্দরভাবে উঠিয়ে দিয়ে আসে। এর জন্য আপনাকে কোনো প্রকার লেবার চার্জ দিতে হয় না।</p>
                 </div>
             </div>
         </div>
@@ -908,25 +907,22 @@
             }
         });
 
-        // FAQ Accordion Toggle
+        // FAQ Accordion Toggle (সংশোধিত: উচ্চতার সীমাবদ্ধতা ছাড়া সম্পূর্ণ ড্রপডাউন)
         const faqQuestions = document.querySelectorAll('.faq-question');
 
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
                 const faqItem = question.parentElement;
-                const faqAnswer = faqItem.querySelector('.faq-answer');
                 const isActive = faqItem.classList.contains('active');
 
-                // আগের খোলা উত্তর বন্ধ করা
+                // আগের খোলা প্রশ্নগুলো বন্ধ করা
                 document.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('active');
-                    item.querySelector('.faq-answer').style.maxHeight = null;
                 });
 
-                // বর্তমান আইটেম ওপেন/ক্লোজ করা
+                // বর্তমান প্রশ্নে ক্লিক করলে ওপেন বা ক্লোজ হওয়া
                 if (!isActive) {
                     faqItem.classList.add('active');
-                    faqAnswer.style.maxHeight = faqAnswer.scrollHeight + "px";
                 }
             });
         });
