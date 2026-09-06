@@ -22,6 +22,7 @@
             --bg-light: #f8fafc;
             --white: #ffffff;
             --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --card-hover-shadow: 0 12px 25px rgba(21, 128, 61, 0.12), 0 4px 12px rgba(217, 119, 6, 0.08);
         }
 
         * {
@@ -262,7 +263,7 @@
             font-size: 1.05rem;
         }
 
-        /* Features */
+        /* Features with Smooth Hover Animation */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -276,12 +277,24 @@
             text-align: center;
             box-shadow: var(--card-shadow);
             border-top: 4px solid var(--primary);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-hover-shadow);
+            border-top-color: var(--accent);
         }
 
         .feature-card i {
             font-size: 2.6rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover i {
+            transform: scale(1.1);
         }
 
         .feature-card h3 {
@@ -289,7 +302,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Partner Brands Showcase */
+        /* Partner Brands Showcase with Smooth Hover Animation */
         .brands-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -303,17 +316,17 @@
             text-align: center;
             box-shadow: var(--card-shadow);
             border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
         }
 
         .brand-box:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             border-color: var(--primary);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .brand-icon-wrapper {
@@ -327,6 +340,13 @@
             justify-content: center;
             margin: 0 auto 12px;
             font-size: 1.3rem;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .brand-box:hover .brand-icon-wrapper {
+            background: var(--primary);
+            color: var(--white);
+            transform: rotate(6deg) scale(1.08);
         }
 
         .brand-box h3 {
@@ -360,6 +380,12 @@
             padding: 2.5rem;
             text-align: center;
             margin-top: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .catalog-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(21, 128, 61, 0.1);
         }
 
         .catalog-banner h3 {
@@ -389,6 +415,92 @@
             margin: 0 auto 2rem;
         }
 
+        /* FAQ Accordion Styles */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+
+        .faq-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(21, 128, 61, 0.08);
+        }
+
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            text-align: left;
+            transition: color 0.3s;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary);
+        }
+
+        .faq-icon-box {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            transition: transform 0.35s ease, background 0.3s, color 0.3s;
+        }
+
+        .faq-item.active .faq-icon-box {
+            transform: rotate(180deg);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+            padding: 0 1.5rem;
+            background: #fafafa;
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0.8rem 1.5rem 1.4rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
         /* Branches Preview */
         .contact-grid {
             display: grid;
@@ -402,6 +514,12 @@
             border-radius: 12px;
             border-left: 5px solid var(--accent);
             box-shadow: var(--card-shadow);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .branch-card h3 {
@@ -479,6 +597,11 @@
                 font-size: 0.88rem;
                 padding: 8px 10px;
             }
+
+            .faq-question {
+                font-size: 1.02rem;
+                padding: 1rem 1.2rem;
+            }
         }
     </style>
 </head>
@@ -523,7 +646,7 @@
     <!-- Free Delivery Highlight Strip -->
     <div class="free-delivery-strip">
         <span class="badge"><i class="fa-solid fa-gift"></i> বিশেষ সুবিধা</span>
-        <span><i class="fa-solid fa-truck-fast"></i> চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি ও আসেপাশের এলাকার মুদি ও পাইকারি দোকানের জন্য <strong>নিজস্ব গাড়িতে সম্পূর্ণ ফ্রি ডেলিভারি</strong> (কোনো গাড়ি ভাড়া বা লেবার চার্জ নেই)!</span>
+        <span><i class="fa-solid fa-truck-fast"></i> চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি ও আসেপাশের এলাকার মুদি ও পাইকারি দোকানের জন্য <strong>নিজস্ব গাড়িতে সম্পূর্ণ ফ্রি ডেলিভারি</strong> (কোনো গাড়ি ভাড়া বা লেবার চার্জ নেই)!</span>
     </div>
 
     <!-- Hero Section -->
@@ -678,6 +801,60 @@
         </div>
     </section>
 
+    <!-- FAQ Accordion Section -->
+    <section class="section" style="padding-top: 0;">
+        <div class="section-title-wrap">
+            <h2 class="section-title">সাধারণ কিছু প্রশ্ন ও উত্তর (FAQ)</h2>
+            <p class="section-subtitle">আমাদের চালের ব্যবসা ও সরবরাহ ব্যবস্থা সম্পর্কে জানুন</p>
+        </div>
+
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><i class="fa-solid fa-circle-question" style="color: var(--primary); margin-right: 8px;"></i> সর্বনিম্ন কত বস্তা চাল অর্ডার করা যায়?</span>
+                    <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <p>খুচরা পারিবারিক ব্যবহারের জন্য <strong>১ বস্তা (২৫ কেজি বা ৫০ কেজি)</strong> থেকেই অর্ডার নেওয়া হয়। তবে হোটেল, মেস বা মুদি দোকানের পাইকারি সুবিধার জন্য ১০ বস্তা বা তার অধিক অর্ডারে বিশেষ পাইকারি মিল রেট ও ফ্রি ডেলিভারি প্রদান করা হয়।</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><i class="fa-solid fa-circle-question" style="color: var(--primary); margin-right: 8px;"></i> টঙ্গীর বাইরে কি আপনারা ডেলিভারি দেন?</span>
+                    <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <p>আমাদের নিজস্ব পরিবহন বহরে টঙ্গী, চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি ও তারগাছে সম্পূর্ণ ফ্রিতে ডেলিভারি দেওয়া হয়। এছাড়া বড় পাইকারি লটের ক্ষেত্রে ঢাকা ও গাজীপুরের যেকোনো এলাকায় পরিবহন খরচের সমন্বয়ে সরাসরি চাল পৌঁছে দেওয়া সম্ভব।</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><i class="fa-solid fa-circle-question" style="color: var(--primary); margin-right: 8px;"></i> পেমেন্ট কীভাবে করতে হয় (ক্যাশ অন ডেলিভারি নাকি ব্যাংক/বিকাশ)?</span>
+                    <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <p>আমরা কাস্টমারদের সুবিধার জন্য <strong>ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে মূল্য পরিশোধ)</strong> গ্রহণ করে থাকি। এছাড়াও বিকাশ, নগদ কিংবা আমাদের অফিশিয়াল ব্যাংক অ্যাকাউন্টের মাধ্যমেও সহজে পেমেন্ট করা যায়।</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><i class="fa-solid fa-circle-question" style="color: var(--primary); margin-right: 8px;"></i> চালের বস্তা কি সরাসরি দোকানে উঠিয়ে দেওয়া হয়?</span>
+                    <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
+                </button>
+                <div class="faq-answer">
+                    <p>হ্যাঁ, অবশ্যই! আমাদের নিজস্ব দায়িত্বশীল ডেলিভারি টিম গাড়ি থেকে বস্তা নামিয়ে সরাসরি আপনার দোকান, রেস্তোরাঁ বা গোডাউনে সুন্দরভাবে উঠিয়ে দিয়ে আসে। এর জন্য আপনাকে কোনো প্রকার লেবার চার্জ দিতে হয় না।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Branches & Contact Overview -->
     <section class="section" style="padding-top: 0;">
         <div class="section-title-wrap">
@@ -712,8 +889,9 @@
         <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
     </footer>
 
-    <!-- Mobile Hamburger Menu JavaScript -->
+    <!-- JavaScript for Hamburger Menu & FAQ Accordion -->
     <script>
+        // Hamburger Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const menuIcon = document.getElementById('menuIcon');
@@ -728,6 +906,29 @@
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
             }
+        });
+
+        // FAQ Accordion Toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const faqAnswer = faqItem.querySelector('.faq-answer');
+                const isActive = faqItem.classList.contains('active');
+
+                // আগের খোলা উত্তর বন্ধ করা
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // বর্তমান আইটেম ওপেন/ক্লোজ করা
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    faqAnswer.style.maxHeight = faqAnswer.scrollHeight + "px";
+                }
+            });
         });
     </script>
 
