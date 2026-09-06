@@ -68,6 +68,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0.8rem 1.5rem;
+            position: relative;
         }
 
         .brand-container {
@@ -101,6 +102,7 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -112,6 +114,17 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
+        }
+
+        /* Mobile Hamburger Button */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
         }
 
         /* Page Banner */
@@ -379,14 +392,40 @@
             margin-top: 3.5rem;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
+        /* Mobile Responsive Styles */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
                 flex-direction: column;
+                padding: 1.2rem 2rem;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                border-top: 1px solid #e2e8f0;
                 gap: 12px;
             }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
             .about-section-card {
                 padding: 1.6rem 1.4rem;
             }
+
             .free-delivery-badge-box {
                 flex-direction: column;
                 text-align: center;
@@ -398,26 +437,32 @@
 
     <!-- Top Notice Bar -->
     <div class="top-bar">
-        সরাসরি পাইকারি চাউলের আড়ৎ | হটলাইন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a>
+        সরাসরি পাইকারি চাউলের আড়ৎ | হটলাইন: <a href="tel:01320395462">০১৩২০-৩৯৫৪৬২</a>
     </div>
 
     <!-- Header Navbar -->
-   <header>
+    <header>
         <div class="navbar">
             <a href="index.html" class="brand-container">
                 <img src="logo.png" alt="মেসার্স সোনালী ট্রেডার্স লোগো" class="brand-logo">
                 <div class="brand-text">
                     <h1>মেসার্স সোনালী ট্রেডার্স</h1>
-                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
+                    <span>প্রসিদ্ধ চাউলের আড়ৎ</span>
                 </div>
             </a>
-            <ul class="nav-links">
+
+            <!-- Mobile Hamburger Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="মোবাইল মেনু">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">হোম</a></li>
                 <li><a href="products.html">চালের তালিকা</a></li>
                 <li><a href="wholesale.html">পাইকারি সরবরাহ</a></li>
-                <li><a href="order.html" class="active">অনলাইন অর্ডার</a></li>
+                <li><a href="order.html">অনলাইন অর্ডার</a></li>
                 <li><a href="contact.html">যোগাযোগ ও শাখা</a></li>
-                <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                <li><a href="about.html" class="active">আমাদের সম্পর্কে</a></li>
             </ul>
         </div>
     </header>
@@ -425,7 +470,7 @@
     <!-- Page Banner -->
     <div class="page-header">
         <h2>আমাদের পরিচিতি ও পথচলা</h2>
-        <p>সততা, সঠিক ওজন ও গ্রাহক সন্তুষ্টির অঙ্গীকার নিয়ে মেসার্স সোনালী ট্রেডার্স</p>
+        <p>সততা, সঠিক ওজন ও গ্রাহক সন্তুষ্টির অঙ্গীকার নিয়ে মেসার্স সোনালী ট্রেডার্স</p>
     </div>
 
     <!-- Main Container -->
@@ -435,9 +480,9 @@
         <div class="about-section-card">
             <div class="section-header">
                 <i class="fa-solid fa-clock-rotate-left"></i>
-                <h3>আমাদের শুরু ও পথচলা (প্রতিষ্ঠা: ১ জানুয়ারি, ২০২১)</h3>
+                <h3>আমাদের শুরু ও পথচলা (প্রতিষ্ঠা: ১ জানুয়ারি, ২০২১)</h3>
             </div>
-            <p><strong>মেসার্স সোনালী ট্রেডার্স</strong> এর বাণিজ্যিক পথচলা শুরু হয়েছিল <strong>২০২১ সালের ১লা জানুয়ারি</strong>। খুব ছোট্ট পরিসরে সততা এবং নিষ্ঠাকে পুঁজি করে আমাদের যাত্রা আরম্ভ হয়েছিল। মহান আল্লাহ তায়ালার অশেষ রহমতে এবং সম্মানিত ক্রেতাদের অগাধ ভালোবাসায় আজ সেই ছোট্ট প্রতিষ্ঠানটি টঙ্গী-গাজীপুর অঞ্চলের একটি শীর্ষস্থানীয় ও সুপ্রতিষ্ঠিত চালের আড়তে পরিণত হয়েছে। দীর্ঘদিনের অভিজ্ঞতা, স্বচ্ছতা এবং আস্থার সাথে আমরা গ্রাহকসেবা প্রদান করে আসছি।</p>
+            <p><strong>মেসার্স সোনালী ট্রেডার্স</strong> এর বাণিজ্যিক পথচলা শুরু হয়েছিল <strong>২০২১ সালের ১লা জানুয়ারি</strong>। খুব ছোট্ট পরিসরে সততা এবং নিষ্ঠাকে পুঁজি করে আমাদের যাত্রা আরম্ভ হয়েছিল। মহান আল্লাহ তায়ালার অশেষ রহমতে এবং সম্মানিত ক্রেতাদের অগাধ ভালোবাসায় আজ সেই ছোট্ট প্রতিষ্ঠানটি টঙ্গী-গাজীপুর অঞ্চলের একটি শীর্ষস্থানীয় ও সুপ্রতিষ্ঠিত চালের আড়তে পরিণত হয়েছে। দীর্ঘদিনের অভিজ্ঞতা, স্বচ্ছতা এবং আস্থার সাথে আমরা গ্রাহকসেবা প্রদান করে আসছি।</p>
         </div>
 
         <!-- Department 2: Unique Free Delivery Service -->
@@ -446,13 +491,13 @@
                 <i class="fa-solid fa-truck-fast"></i>
                 <h3>আমাদের প্রধান সেবা: সম্পূর্ণ ফ্রি নিজস্ব ডেলিভারি</h3>
             </div>
-            <p>আমাদের ব্যবসার অন্যতম প্রধান বিশেষত্ব হলো—আমরা নিয়মিত প্রতিটি খুচরা ও পাইকারি চালের দোকান থেকে সরাসরি অর্ডার সংগ্রহ করি এবং আমাদের নিজস্ব পরিবহন ব্যবস্থার মাধ্যমে পণ্য পৌঁছে দিই।</p>
+            <p>আমাদের ব্যবসার অন্যতম প্রধান বিশেষত্ব হলো—আমরা নিয়মিত প্রতিটি খুচরা ও পাইকারি চালের দোকান থেকে সরাসরি অর্ডার সংগ্রহ করি এবং আমাদের নিজস্ব পরিবহন ব্যবস্থার মাধ্যমে পণ্য পৌঁছে দিই।</p>
             
             <div class="free-delivery-badge-box">
                 <i class="fa-solid fa-hand-holding-dollar"></i>
                 <div class="free-delivery-text">
                     <h4>কোনো হিডেন বা অতিরিক্ত চার্জ নেই!</h4>
-                    <p>আমাদের কাছ থেকে চাল ক্রয়ে গ্রাহককে কোনো <strong>ডেলিভারি চার্জ</strong> বা <strong>লেবার চার্জ</strong> দিতে হয় না। সম্পূর্ণ ফ্রিতে আপনার দোকানের দোরগোড়ায় পণ্য পৌঁছে দেওয়া হয়।</p>
+                    <p>আমাদের কাছ থেকে চাল ক্রয়ে গ্রাহককে কোনো <strong>ডেলিভারি চার্জ</strong> বা <strong>লেবার চার্জ</strong> দিতে হয় না। সম্পূর্ণ ফ্রিতে আপনার দোকানের দোরগোড়ায় পণ্য পৌঁছে দেওয়া হয়।</p>
                 </div>
             </div>
         </div>
@@ -461,16 +506,16 @@
         <div class="about-section-card">
             <div class="section-header">
                 <i class="fa-solid fa-map-location-dot"></i>
-                <h3>ডেলিভারি এরিয়া ও সার্ভিস জোন</h3>
+                <h3>ডেলিভারি এরিয়া ও সার্ভিস জোন</h3>
             </div>
-            <p>আমাদের নিজস্ব ডেলিভারি বহর নিয়মিতভাবে টঙ্গী, গাজীপুর ও এর পার্শ্ববর্তী গুরুত্বপূর্ণ বাণিজ্যিক এলাকাগুলোতে সরাসরি চাল সরবরাহ করে থাকে:</p>
+            <p>আমাদের নিজস্ব ডেলিভারি বহর নিয়মিতভাবে টঙ্গী, গাজীপুর ও এর পার্শ্ববর্তী গুরুত্বপূর্ণ বাণিজ্যিক এলাকাগুলোতে সরাসরি চাল সরবরাহ করে থাকে:</p>
             
             <div class="chips-grid">
                 <div class="area-chip"><i class="fa-solid fa-location-dot"></i> চেরাগআলী</div>
                 <div class="area-chip"><i class="fa-solid fa-location-dot"></i> কলেজ গেট</div>
                 <div class="area-chip"><i class="fa-solid fa-location-dot"></i> গাজীপুরা</div>
                 <div class="area-chip"><i class="fa-solid fa-location-dot"></i> বোর্ড বাজার</div>
-                <div class="area-chip"><i class="fa-solid fa-location-dot"></i> বড়বাড়ি</div>
+                <div class="area-chip"><i class="fa-solid fa-location-dot"></i> বড়বাড়ি</div>
                 <div class="area-chip"><i class="fa-solid fa-location-dot"></i> তারগাছ</div>
                 <div class="area-chip"><i class="fa-solid fa-location-dot"></i> ও পার্শ্ববর্তী সকল এলাকা</div>
             </div>
@@ -482,7 +527,7 @@
                 <i class="fa-solid fa-people-carry-box"></i>
                 <h3>দক্ষ ও আন্তরিক ডেলিভারি টিম</h3>
             </div>
-            <p>আমাদের রয়েছে অত্যন্ত অভিজ্ঞ ও দায়িত্বশীল ডেলিভারি টিম। পণ্য লোডিং থেকে শুরু করে গ্রাহকের দোকানে নামানো পর্যন্ত প্রতিটি ধাপে সর্বোচ্চ সতর্কতা বজায় রাখা হয়, যাতে কোনো প্রকার ভোগান্তি বা ঝামেলা ছাড়াই বস্তার সঠিক নিরাপত্তা নিশ্চিত করে কাস্টমারের দোকানে সুন্দরভাবে চাল হস্তান্তর করা যায়।</p>
+            <p>আমাদের রয়েছে অত্যন্ত অভিজ্ঞ ও দায়িত্বশীল ডেলিভারি টিম। পণ্য লোডিং থেকে শুরু করে গ্রাহকের দোকানে নামানো পর্যন্ত প্রতিটি ধাপে সর্বোচ্চ সতর্কতা বজায় রাখা হয়, যাতে কোনো প্রকার ভোগান্তি বা ঝামেলা ছাড়াই বস্তার সঠিক নিরাপত্তা নিশ্চিত করে কাস্টমারের দোকানে সুন্দরভাবে চাল হস্তান্তর করা যায়।</p>
         </div>
 
         <!-- Department 5: Quality & Weight Assurance -->
@@ -493,16 +538,16 @@
             </div>
             <div class="pillars-grid">
                 <div class="pillar-card">
-                    <h4><i class="fa-solid fa-wheat-awn"></i> কৃত্রিম পলিশ ছাড়া আসল চাল</h4>
-                    <p>কোনো প্রকার রাসায়নিক প্রক্রিয়া বা ক্ষতিকর পলিশ ছাড়া সম্পূর্ণ প্রাকৃতিক ও স্বাস্থ্যসম্মত খাঁটি চাল সরবরাহ করি।</p>
+                    <h4><i class="fa-solid fa-wheat-awn"></i> কৃত্রিম পলিশ ছাড়া আসল চাল</h4>
+                    <p>কোনো প্রকার রাসায়নিক প্রক্রিয়া বা ক্ষতিকর পলিশ ছাড়া সম্পূর্ণ প্রাকৃতিক ও স্বাস্থ্যসম্মত খাঁটি চাল সরবরাহ করি।</p>
                 </div>
                 <div class="pillar-card">
-                    <h4><i class="fa-solid fa-weight-scale"></i> ১০০% ডিজিটাল ওজন নিশ্চয়তা</h4>
-                    <p>ডিজিটাল ওজন স্কেলে নিখুঁতভাবে মেপে বস্তা সরবরাহ করা হয়। পরিমাপে কোনো কমতি বা গরমিলের সুযোগ নেই।</p>
+                    <h4><i class="fa-solid fa-weight-scale"></i> ১০০% ডিজিটাল ওজন নিশ্চয়তা</h4>
+                    <p>ডিজিটাল ওজন স্কেলে নিখুঁতভাবে মেপে বস্তা সরবরাহ করা হয়। পরিমাপে কোনো কমতি বা গরমিলের সুযোগ নেই।</p>
                 </div>
                 <div class="pillar-card">
                     <h4><i class="fa-solid fa-shield-halved"></i> সুনাম ও দীর্ঘদিনের সততা</h4>
-                    <p>ব্যবসার শুরু থেকেই স্বচ্ছতা বজায় রাখা এবং কাস্টমারের বিশ্বাস অর্জনই আমাদের দীর্ঘ পথচলার মূল চাবিকাঠি।</p>
+                    <p>ব্যবসার শুরু থেকেই স্বচ্ছতা বজায় রাখা এবং কাস্টমারের বিশ্বাস অর্জনই আমাদের দীর্ঘ পথচলার মূল চাবিকাঠি।</p>
                 </div>
             </div>
         </div>
@@ -518,8 +563,8 @@
             <div class="district-tags">
                 <span class="district-tag">দিনাজপুর</span>
                 <span class="district-tag">নওগাঁ</span>
-                <span class="district-tag">বগুড়া</span>
-                <span class="district-tag">কুষ্টিয়া</span>
+                <span class="district-tag">বগুড়া</span>
+                <span class="district-tag">কুষ্টিয়া</span>
                 <span class="district-tag">চাঁপাইনবাবগঞ্জ</span>
                 <span class="district-tag">রাজশাহী</span>
                 <span class="district-tag">টাঙ্গাইল</span>
@@ -527,7 +572,7 @@
             </div>
 
             <p style="margin-top: 12px; color: var(--text-muted); font-size: 0.95rem;">
-                পাশাপাশি দেশের শীর্ষস্থানীয় ব্র্যান্ড মিলসমূহ—<strong>এসিআই (ACI), মোজাম্মেল, দাদা রাইস (আরশাদ আলী), দেশ এগ্রো, ফ্রেশ, পুষ্টি, বুশরা, জহুরা, সাগর, বিশ্বাস, আপ্যায়ন ও স্বপ্ন সুপার</strong> সহ সকল স্বনামধন্য কোম্পানির চাল আমাদের আড়তে সরাসরি মজুত থাকে।
+                পাশাপাশি দেশের শীর্ষস্থানীয় ব্র্যান্ড মিলসমূহ—<strong>এসিআই (ACI), মোজাম্মেল, দাদা রাইস (আরশাদ আলী), দেশ এগ্রো, ফ্রেশ, পুষ্টি, বুশরা, জহুরা, সাগর, বিশ্বাস, আপ্যায়ন ও স্বপ্ন সুপার</strong> সহ সকল স্বনামধন্য কোম্পানির চাল আমাদের আড়তে সরাসরি মজুত থাকে।
             </p>
         </div>
 
@@ -537,18 +582,18 @@
                 <i class="fa-solid fa-building-circle-check"></i>
                 <h3>আমাদের শাখাসমূহ</h3>
             </div>
-            <p>ক্রেতাদের সেবা নিশ্চিত করতে এবং দ্রুত সরবরাহের সুবিধার্থে আমাদের দুটি শাখা সার্বক্ষণিক প্রস্তুত রয়েছে:</p>
+            <p>ক্রেতাদের সেবা নিশ্চিত করতে এবং দ্রুত সরবরাহের সুবিধার্থে আমাদের দুটি শাখা সার্বক্ষণিক প্রস্তুত রয়েছে:</p>
 
             <div class="branches-grid">
                 <div class="branch-item">
                     <h4><i class="fa-solid fa-store"></i> প্রধান শাখা</h4>
-                    <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
+                    <p>সমাজকল্যাণ রোড, আমির আলী মার্কেট, দত্তপাড়া, চেরাগআলী, টঙ্গী, গাজীপুর।</p>
                     <div class="branch-phones">ফোন: ০১৩২০-৩৯৫৪৬২, ০১৩২০-৩৯৫৪৭১</div>
                 </div>
 
                 <div class="branch-item">
                     <h4><i class="fa-solid fa-warehouse"></i> ইউনিট-০২</h4>
-                    <p>হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।</p>
+                    <p>হাউজ বিল্ডিং, বনমালা রোড, দত্তপাড়া, টঙ্গী, গাজীপুর।</p>
                     <div class="branch-phones">ফোন: ০১৩২০-৩৯৫৪৬২, ০১৭৪২-৮৩১৪৭৬</div>
                 </div>
             </div>
@@ -556,11 +601,11 @@
 
         <!-- CTA Action Box -->
         <div class="cta-banner">
-            <h3>ব্যবসায়িক অংশীদার হতে চান?</h3>
+            <h3>ব্যবসায়িক অংশীদার হতে চান?</h3>
             <p>আপনার দোকান, হোটেল বা প্রতিষ্ঠানের জন্য সেরা মানের চাল সরাসরি দোকানে পৌঁছে নিতে এখনই যোগাযোগ করুন।</p>
             <div class="cta-btn-group">
                 <a href="tel:01320395462" class="btn-cta btn-cta-phone"><i class="fa-solid fa-phone"></i> ০১৩২০-৩৯৫৪৬২</a>
-                <a href="https://wa.me/8801320395462" class="btn-cta btn-cta-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার দিন</a>
+                <a href="https://wa.me/8801320395462" class="btn-cta btn-cta-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে অর্ডার দিন</a>
             </div>
         </div>
 
@@ -569,8 +614,26 @@
     <!-- Footer -->
     <footer>
         <p>&copy; ২০২৬ মেসার্স সোনালী ট্রেডার্স। সর্বস্বত্ব সংরক্ষিত।</p>
-        <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
+        <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">প্রসিদ্ধ চাউলের আড়ৎ — টঙ্গী, গাজীপুর</p>
     </footer>
+
+    <!-- Mobile Hamburger Menu JavaScript -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+    </script>
 
 </body>
 </html>
