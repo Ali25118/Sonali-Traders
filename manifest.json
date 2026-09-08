@@ -1,1 +1,32 @@
 
+{
+  "name": "Sonali Traders",
+  "short_name": "Sonali Traders",
+  "description": "মেসার্স সোনালী ট্রেডার্স - প্রসিদ্ধ চাউলের আড়ৎ",
+  "start_url": "/Sonali-Traders/index.html",
+  "scope": "/Sonali-Traders/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e7d32",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
