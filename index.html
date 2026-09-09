@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>মেসার্স সোনালী ট্রেডার্স - প্রসিদ্ধ চাউলের আড়ৎ</title>
 
-    <!-- PWA Setup: অ্যাপ বানানোর জন্য ম্যানিফেস্ট ও থিম কালার লিংক -->
+    <!-- Android PWA Setup -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#15803d">
-    <!-- Android & Google Chrome PWA Setup -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#15803d">
-<meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
-    
+
     <style>
         :root {
             --primary: #15803d;
@@ -33,6 +30,7 @@
             --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             --card-hover-shadow: 0 12px 25px rgba(21, 128, 61, 0.12), 0 4px 12px rgba(217, 119, 6, 0.08);
         }
+
         * {
             margin: 0;
             padding: 0;
@@ -596,9 +594,21 @@
             }
 
             .nav-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
                 width: 100%;
-                padding: 8px 0;
+                padding: 10px 0;
                 border-bottom: 1px solid #f1f5f9;
+                font-size: 1.05rem;
+            }
+
+            .nav-links a i {
+                color: var(--primary);
+                font-size: 1.1rem;
+                width: 22px;
+                text-align: center;
             }
 
             .hero h2 {
@@ -889,7 +899,7 @@
                     <div class="faq-icon-box"><i class="fa-solid fa-chevron-down"></i></div>
                 </button>
                 <div class="faq-answer">
-                    <p>আমাদের নিজস্ব পরিবহন বহরে টঙ্গী, চেরাগআলী, কলেজ গেট, গাজীপুরা, বোর্ড বাজার, বড়বাড়ি, তারগাছ ও পার্শবর্তী এলাকাই সম্পূর্ণ ফ্রিতে ডেলিভারি দেওয়া হয়। এছাড়া বড় পাইকারি অর্ডারের ক্ষেত্রে ঢাকা ও গাজীপুরের যেকোনো এলাকায় পরিবহন খরচের সমন্বয়ে সরাসরি চাল পৌঁছে দেওয়া সম্ভব।</p>
+                    <p>আমাদের নিজস্ব পরিবহন বহরে টঙ্গী, চেরাগআলী, কলেজ গেট, গাজীপুরা, board বাজার, বড়বাড়ি, তারগাছ ও পার্শ্ববর্তী এলাকায় সম্পূর্ণ ফ্রিতে ডেলিভারি দেওয়া হয়। এছাড়া বড় পাইকারি অর্ডারের ক্ষেত্রে ঢাকা ও গাজীপুরের যেকোনো এলাকায় পরিবহন খরচের সমন্বয়ে সরাসরি চাল পৌঁছে দেওয়া সম্ভব।</p>
                 </div>
             </div>
 
@@ -990,7 +1000,7 @@
             }
         });
 
-        // FAQ Accordion Toggle (সংশোধিত: উচ্চতার সীমাবদ্ধতা ছাড়া সম্পূর্ণ ড্রপডাউন)
+        // FAQ Accordion Toggle
         const faqQuestions = document.querySelectorAll('.faq-question');
 
         faqQuestions.forEach(question => {
