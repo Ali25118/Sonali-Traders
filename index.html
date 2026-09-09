@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>মেসার্স সোনালী ট্রেডার্স - প্রসিদ্ধ চাউলের আড়ৎ</title>
+
+    <!-- PWA Setup: অ্যাপ বানানোর জন্য ম্যানিফেস্ট ও থিম কালার লিংক -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#15803d">
+    <!-- Android & Google Chrome PWA Setup -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#15803d">
+<meta name="mobile-web-app-capable" content="yes">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="manifest" href="/Sonali-Traders/manifest.json">
-<meta name="theme-color" content="#1e7d32">
-<link rel="icon" href="/Sonali-Traders/logo.png">
-<link rel="apple-touch-icon" href="/Sonali-Traders/logo.png">
     
     <style>
         :root {
@@ -28,7 +33,6 @@
             --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             --card-hover-shadow: 0 12px 25px rgba(21, 128, 61, 0.12), 0 4px 12px rgba(217, 119, 6, 0.08);
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -615,7 +619,7 @@
         /* Mobile Navigation Bar Activates on Mobile Screen */
         @media (max-width: 768px) {
             body {
-                padding-bottom: 65px; /* বটম বারের জন্য কন্টেন্ট যাতে ঢাকা না পড়ে */
+                padding-bottom: 65px;
             }
 
             .bottom-nav-bar {
@@ -692,14 +696,14 @@
             </button>
 
             <!-- Navigation Links -->
-           <ul class="nav-links" id="navLinks">
-    <li><a href="index.html" class="active"><i class="fa-solid fa-seedling"></i> হোম</a></li>
-    <li><a href="products.html"><i class="fa-solid fa-bowl-rice"></i> চালের তালিকা</a></li>
-    <li><a href="wholesale.html"><i class="fa-solid fa-boxes-stacked"></i> পাইকারি সরবরাহ</a></li>
-    <li><a href="order.html"><i class="fa-solid fa-bag-shopping"></i> অনলাইন অর্ডার</a></li>
-    <li><a href="contact.html"><i class="fa-solid fa-store"></i> যোগাযোগ ও শাখা</a></li>
-    <li><a href="about.html"><i class="fa-solid fa-award"></i> আমাদের সম্পর্কে</a></li>
-</ul>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active"><i class="fa-solid fa-seedling"></i> হোম</a></li>
+                <li><a href="products.html"><i class="fa-solid fa-bowl-rice"></i> চালের তালিকা</a></li>
+                <li><a href="wholesale.html"><i class="fa-solid fa-boxes-stacked"></i> পাইকারি সরবরাহ</a></li>
+                <li><a href="order.html"><i class="fa-solid fa-bag-shopping"></i> অনলাইন অর্ডার</a></li>
+                <li><a href="contact.html"><i class="fa-solid fa-store"></i> যোগাযোগ ও শাখা</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-award"></i> আমাদের সম্পর্কে</a></li>
+            </ul>
         </div>
     </header>
 
@@ -758,7 +762,6 @@
         </div>
 
         <div class="brands-container">
-            
             <div class="brand-box">
                 <div class="brand-icon-wrapper"><i class="fa-solid fa-seedling"></i></div>
                 <h3>এসিআই (ACI)</h3>
@@ -842,7 +845,6 @@
                 <p>স্বপ্ন সুপার এগ্রো ফুড টাঙ্গাইলের সেরা মানের হাসকি চাউল।</p>
                 <span class="brand-pill">সুপার প্রিমিয়াম</span>
             </div>
-
         </div>
 
         <div class="catalog-banner">
@@ -1007,6 +1009,17 @@
                 }
             });
         });
+    </script>
+
+    <!-- PWA Service Worker Registration Script -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(() => console.log('Service Worker Registered Successfully!'))
+                    .catch((err) => console.log('Service Worker Failed:', err));
+            });
+        }
     </script>
 
 </body>
